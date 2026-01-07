@@ -1,0 +1,244 @@
+/* ===================================
+   Timer Picker - Custom Scrollable
+   =================================== */
+
+.picker-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@media (min-width: 640px) {
+    .picker-overlay {
+        align-items: center;
+    }
+}
+
+.picker-overlay.visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.picker-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+}
+
+.picker-card {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(24px);
+    border-radius: 32px 32px 0 0;
+    box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.12);
+    padding: 24px;
+    transform: translateY(100%);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    margin: 0;
+}
+
+@media (min-width: 640px) {
+    .picker-card {
+        border-radius: 32px;
+        transform: scale(0.95);
+        opacity: 0;
+        margin: 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.picker-overlay.visible .picker-card {
+    transform: translateY(0);
+}
+
+@media (min-width: 640px) {
+    .picker-overlay.visible .picker-card {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+.dark .picker-card {
+    background: rgba(15, 23, 42, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.drag-handle {
+    width: 48px;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    margin: 0 auto 24px auto;
+}
+
+.dark .drag-handle {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.picker-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.picker-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 4px 0;
+}
+
+.picker-subtitle {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.picker-columns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.time-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 96px;
+}
+
+.column-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+}
+
+/* Custom Scrollable Time Picker */
+.time-scroller-wrapper {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.dark .time-scroller-wrapper {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.time-scroller {
+    height: 100%;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 50px 0;
+    /* Padding to center items */
+}
+
+/* Hide scrollbar */
+.time-scroller::-webkit-scrollbar {
+    display: none;
+}
+
+.time-scroller {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.time-option {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    scroll-snap-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.time-option:hover {
+    color: var(--color-text-primary);
+}
+
+/* Highlight bar in center */
+.scroller-highlight {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 40px;
+    transform: translateY(-50%);
+    background: rgba(59, 130, 246, 0.08);
+    border-top: 1px solid rgba(59, 130, 246, 0.2);
+    border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.picker-arrow {
+    color: var(--color-text-tertiary);
+    opacity: 0.4;
+    margin-top: 16px;
+}
+
+.picker-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.picker-btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: 16px;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-cancel {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-text-secondary);
+}
+
+.dark .btn-cancel {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--color-text-main-dark);
+}
+
+.btn-cancel:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.btn-save {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-save:hover {
+    background: #2563EB;
+    transform: translateY(-1px);
+}

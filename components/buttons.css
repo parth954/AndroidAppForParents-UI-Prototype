@@ -1,0 +1,128 @@
+/* ===================================
+   Reusable Button Components
+   =================================== */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    padding: 0 20px;
+    border-radius: 16px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: all 0.15s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn:active {
+    transform: translateY(3px);
+}
+
+/* Google Button */
+.btn-google {
+    background-color: var(--color-surface);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-tactile);
+}
+
+.btn-google:hover {
+    background-color: #FAFAFA;
+}
+
+.dark .btn-google:hover {
+    background-color: #2A3548;
+}
+
+.btn-google:active {
+    box-shadow: var(--shadow-tactile-active);
+}
+
+/* Primary Button */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: #FFFFFF;
+    box-shadow: var(--shadow-tactile);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-dark);
+}
+
+.btn-primary:active {
+    box-shadow: var(--shadow-tactile-active);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--color-text-primary);
+    border: 1px solid var(--color-border);
+    backdrop-filter: blur(12px);
+}
+
+.dark .btn-secondary {
+    background-color: rgba(30, 41, 59, 0.5);
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-surface);
+}
+
+/* Button Icons */
+.google-icon {
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.google-icon svg {
+    width: 24px;
+    height: 24px;
+}
+
+.btn-icon {
+    margin-right: 8px;
+    font-size: 20px !important;
+}
+
+.btn-text {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 100;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
+}
+
+.theme-toggle .material-symbols-outlined {
+    font-size: 24px;
+    color: var(--color-text-primary);
+}

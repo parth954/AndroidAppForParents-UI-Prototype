@@ -1,0 +1,77 @@
+/* ===================================
+   Design System - Core Tokens
+   =================================== */
+:root {
+    /* Primary Colors */
+    --color-primary: #5D8AF4;
+    --color-primary-dark: #4276F0;
+    --color-primary-light: #7DA3F6;
+
+    /* Sage Green Accent */
+    --color-sage: #8BA88E;
+    --color-sage-light: #E1EBE4;
+    --color-sage-dark: #1F2E23;
+
+    /* Background */
+    --color-bg-light: #FFFFFF;
+    --color-bg-dark: #101522;
+
+    /* Text */
+    --color-text-primary: #0F172A;
+    --color-text-secondary: #64748B;
+    --color-text-tertiary: #94A3B8;
+
+    /* Surface */
+    --color-surface: #FFFFFF;
+    --color-border: #E2E8F0;
+
+    /* Shadows */
+    --shadow-tactile: 0 4px 0 0 rgba(0, 0, 0, 0.05), 0 2px 4px 0 rgba(0, 0, 0, 0.05);
+    --shadow-tactile-active: 0 1px 0 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-soft: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Dark mode colors */
+.dark {
+    --color-bg-light: #101522;
+    --color-text-primary: #F1F5F9;
+    --color-text-secondary: #94A3B8;
+    --color-surface: #1E293B;
+    --color-border: #334155;
+}
+
+/* ===================================
+   Base Styles
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    padding: 0;
+}
+
+/* Material Symbols */
+.material-symbols-outlined {
+    font-family: 'Material Symbols Outlined';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    line-height: 1;
+    letter-spacing: normal;
+    text-transform: none;
+    display: inline-block;
+    white-space: nowrap;
+    word-wrap: normal;
+    direction: ltr;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-feature-settings: 'liga';
+}

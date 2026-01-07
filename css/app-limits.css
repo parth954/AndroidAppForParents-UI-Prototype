@@ -1,0 +1,254 @@
+/* ===================================
+   App Limits - Premium Design
+   =================================== */
+
+.limits-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 448px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+/* Header */
+.page-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background-color: rgba(246, 246, 248, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+}
+
+.dark .page-header {
+    background-color: rgba(16, 21, 34, 0.8);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.back-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+}
+
+.dark .back-button {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.back-button:hover {
+    background-color: white;
+    transform: scale(1.05);
+}
+
+.header-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+    letter-spacing: -0.3px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+}
+
+.header-actions {
+    width: 40px;
+    /* Balance spacing */
+}
+
+/* Main Content */
+.main-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Info Banner */
+.info-banner {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: linear-gradient(135deg, rgba(93, 138, 244, 0.1), rgba(93, 138, 244, 0.05));
+    border: 1px solid rgba(93, 138, 244, 0.15);
+    padding: 16px;
+    border-radius: 16px;
+}
+
+.info-banner .material-symbols-outlined {
+    color: var(--color-primary);
+    font-size: 20px;
+}
+
+.info-banner p {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    margin: 0;
+    line-height: 1.4;
+}
+
+/* Categories List */
+.categories-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.category-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.8));
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    padding: 18px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.dark .category-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(30, 41, 59, 0.8));
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.category-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.9));
+}
+
+/* Category Icons */
+.cat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.cat-icon .material-symbols-outlined {
+    font-size: 24px;
+}
+
+/* Category Colors */
+.cat-icon.education {
+    background-color: rgba(16, 185, 129, 0.12);
+    color: #10B981;
+}
+
+.cat-icon.entertainment {
+    background-color: rgba(244, 63, 94, 0.12);
+    color: #F43F5E;
+}
+
+.cat-icon.gaming {
+    background-color: rgba(139, 92, 246, 0.12);
+    color: #8B5CF6;
+}
+
+.cat-icon.social {
+    background-color: rgba(59, 130, 246, 0.12);
+    color: #3B82F6;
+}
+
+.cat-icon.creativity {
+    background-color: rgba(245, 158, 11, 0.12);
+    color: #F59E0B;
+}
+
+.cat-icon.utilities {
+    background-color: rgba(107, 114, 128, 0.12);
+    color: #6B7280;
+}
+
+.dark .cat-icon {
+    /* Slightly higher opacity for dark mode */
+}
+
+/* Category Details */
+.cat-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    min-width: 0;
+    /* For text truncation if needed */
+}
+
+.cat-name {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.cat-apps {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-text-tertiary);
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Limit Badge */
+.limit-badge {
+    padding: 6px 12px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.limit-badge.time {
+    background-color: rgba(0, 0, 0, 0.05);
+    color: var(--color-text-primary);
+}
+
+.dark .limit-badge.time {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.limit-badge.allowed {
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10B981;
+}
+
+.limit-badge.blocked {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #EF4444;
+}
+
+/* Chevron */
+.chevron {
+    color: var(--color-text-tertiary);
+    font-size: 20px;
+    opacity: 0.6;
+}

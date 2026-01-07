@@ -1,0 +1,188 @@
+/* ===================================
+   Modal Component Styles
+   =================================== */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-content {
+    background-color: var(--color-surface);
+    border-radius: 24px;
+    width: 90%;
+    max-width: 450px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.google-logo-header {
+    display: flex;
+    align-items: center;
+}
+
+.modal-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.2s;
+}
+
+.modal-close:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.dark .modal-close:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.modal-title-section {
+    padding: 24px 24px 16px;
+    text-align: center;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 400;
+    color: var(--color-text-primary);
+    margin: 0 0 8px 0;
+}
+
+.modal-subtitle {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.account-list {
+    padding: 8px 0;
+}
+
+.account-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 24px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    text-align: left;
+}
+
+.account-item:hover {
+    background-color: rgba(0, 0, 0, 0.04);
+}
+
+.dark .account-item:hover {
+    background-color: rgba(255, 255, 255, 0.08);
+}
+
+.account-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-sage));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.avatar-letter {
+    color: white;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.account-avatar-secondary {
+    background: var(--color-border);
+    color: var(--color-text-secondary);
+}
+
+.account-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.account-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 2px;
+}
+
+.account-email {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.account-check {
+    color: transparent;
+    font-size: 20px;
+    transition: color 0.2s;
+}
+
+.account-item:hover .account-check {
+    color: var(--color-text-tertiary);
+}
+
+.account-item-secondary .account-check {
+    display: none;
+}
+
+.modal-footer {
+    padding: 16px 24px 24px;
+    border-top: 1px solid var(--color-border);
+}
+
+.modal-footer-text {
+    font-size: 12px;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+    margin: 0;
+    text-align: center;
+}

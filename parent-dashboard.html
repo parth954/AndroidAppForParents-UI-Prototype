@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard - Parental Control</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/parent-dashboard.css">
+    <link rel="stylesheet" href="components/buttons.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <div class="dashboard-container" id="app">
+        <!-- Background gradient -->
+        <div class="background-gradient"></div>
+
+        <!-- Header -->
+        <header class="dashboard-header">
+            <div class="header-content">
+                <div class="header-left">
+                    <div class="parent-avatar">
+                        <img src="assets/mother-avatar.png" alt="Parent" class="avatar-image" id="parentAvatarImage">
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div class="header-text">
+                        <span class="header-label">Parent View</span>
+                        <h2 class="header-greeting" id="parentGreeting">Good Morning, Parth</h2>
+                    </div>
+                </div>
+                <div class="header-actions">
+                    <button class="action-button" onclick="ParentDashboardHandlers.goToFamily()"
+                        title="Family Management" data-tooltip="Family">
+                        <span class="material-symbols-outlined">supervisor_account</span>
+                    </button>
+                    <button class="action-button" onclick="ParentDashboardHandlers.goToSettings()" title="Settings"
+                        data-tooltip="Settings">
+                        <span class="material-symbols-outlined">settings</span>
+                    </button>
+                    <button class="action-button notification-button"
+                        onclick="ParentDashboardHandlers.showNotifications()" title="Notifications"
+                        data-tooltip="Notifications">
+                        <span class="material-symbols-outlined">notifications</span>
+                        <span class="notification-badge"></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="dashboard-main">
+            <!-- Child Cards -->
+            <div class="child-cards">
+                <!-- Leo's Card -->
+                <article class="child-card">
+                    <div class="card-top">
+                        <div class="child-avatar-wrapper">
+                            <svg class="progress-ring" viewBox="0 0 100 100">
+                                <circle class="progress-ring-bg" cx="50" cy="50" r="46"></circle>
+                                <circle class="progress-ring-fill" cx="50" cy="50" r="46"
+                                    style="stroke-dashoffset: 72;"></circle>
+                            </svg>
+                            <div class="child-avatar">
+                                <img src="assets/child-leo.png" alt="Leo">
+                            </div>
+                        </div>
+                        <div class="child-info">
+                            <div class="child-header">
+                                <h3 class="child-name">Leo</h3>
+                                <div class="menu-wrapper">
+                                    <button class="menu-button"
+                                        onclick="ParentDashboardHandlers.toggleMenu(event, 'Leo')">
+                                        <span class="material-symbols-outlined">more_horiz</span>
+                                    </button>
+                                    <div class="menu-dropdown" id="menu-Leo">
+                                        <button class="menu-item" onclick="ParentDashboardHandlers.deleteChild('Leo')">
+                                            <span class="material-symbols-outlined">delete</span>
+                                            Delete Child Profile
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="time-remaining">
+                                <span class="material-symbols-outlined">schedule</span>
+                                <span>1h 30m remaining</span>
+                            </div>
+                            <div class="activity-status playing">
+                                <div class="status-dot"></div>
+                                <span>Playing: Minecraft</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-secondary-action" onclick="ParentDashboardHandlers.editRules('Leo')">
+                            <span class="material-symbols-outlined">tune</span>
+                            Edit Rules
+                        </button>
+                        <button class="btn-primary-action" onclick="ParentDashboardHandlers.monitor('Leo')">
+                            <span class="material-symbols-outlined">visibility</span>
+                            Monitor
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Mia's Card -->
+                <article class="child-card">
+                    <div class="card-top">
+                        <div class="child-avatar-wrapper">
+                            <svg class="progress-ring" viewBox="0 0 100 100">
+                                <circle class="progress-ring-bg" cx="50" cy="50" r="46"></circle>
+                                <circle class="progress-ring-fill" cx="50" cy="50" r="46"
+                                    style="stroke-dashoffset: 231;"></circle>
+                            </svg>
+                            <div class="child-avatar">
+                                <img src="assets/child-mia.png" alt="Mia">
+                            </div>
+                        </div>
+                        <div class="child-info">
+                            <div class="child-header">
+                                <h3 class="child-name">Mia</h3>
+                                <div class="menu-wrapper">
+                                    <button class="menu-button"
+                                        onclick="ParentDashboardHandlers.toggleMenu(event, 'Mia')">
+                                        <span class="material-symbols-outlined">more_horiz</span>
+                                    </button>
+                                    <div class="menu-dropdown" id="menu-Mia">
+                                        <button class="menu-item" onclick="ParentDashboardHandlers.deleteChild('Mia')">
+                                            <span class="material-symbols-outlined">delete</span>
+                                            Delete Child Profile
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="time-remaining">
+                                <span class="material-symbols-outlined">schedule</span>
+                                <span>4h remaining</span>
+                            </div>
+                            <div class="activity-status online">
+                                <div class="status-dot"></div>
+                                <span>Status: Online Class</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="btn-secondary-action" onclick="ParentDashboardHandlers.editRules('Mia')">
+                            <span class="material-symbols-outlined">tune</span>
+                            Edit Rules
+                        </button>
+                        <button class="btn-primary-action" onclick="ParentDashboardHandlers.monitor('Mia')">
+                            <span class="material-symbols-outlined">visibility</span>
+                            Monitor
+                        </button>
+                    </div>
+                </article>
+
+                <!-- Add Child Button -->
+                <button class="add-child-button" onclick="ParentDashboardHandlers.addChild()">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    Add Child Profile
+                </button>
+            </div>
+        </main>
+
+        <!-- Floating Help Button -->
+        <button class="floating-help-button" onclick="ParentDashboardHandlers.showHelp()" title="Guided Tour">
+            <span class="material-symbols-outlined">help</span>
+        </button>
+
+        <!-- Theme toggle -->
+        <button class="theme-toggle" onclick="ThemeManager.toggle()" title="Toggle dark mode">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+    </div>
+
+    <!-- Modular JavaScript -->
+    <script src="js/notifications.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/parent-dashboard.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Setup - Parental Control</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/family-setup.css">
+    <link rel="stylesheet" href="components/buttons.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <div class="app-container" id="app">
+        <!-- Background gradient -->
+        <div class="background-gradient"></div>
+
+        <!-- Content container -->
+        <div class="content-container">
+            <!-- Progress indicators -->
+            <div class="progress-indicators">
+                <div class="progress-bar active"></div>
+                <div class="progress-bar"></div>
+                <div class="progress-bar"></div>
+            </div>
+
+            <!-- Logo and header -->
+            <div class="header-section">
+                <!-- Title -->
+                <h1 class="title">Create or Join a Family</h1>
+
+                <!-- Subtitle -->
+                <p class="subtitle">Choose how you'd like to get started with family protection.</p>
+            </div>
+
+            <!-- Hero image -->
+            <div class="hero-container">
+                <img src="assets/images/family-illustration.png" alt="Family" class="hero-image" onerror="this.style.display='none';">
+            </div>
+
+            <!-- Buttons section -->
+            <div class="buttons-section">
+                <!-- Create Family button -->
+                <button class="btn btn-primary" onclick="FamilySetupHandlers.createFamily()">
+                    <span class="material-symbols-outlined btn-icon">add_circle</span>
+                    <span class="btn-text">Create New Family</span>
+                </button>
+
+                <!-- Join Family button -->
+                <button class="btn btn-secondary" onclick="FamilySetupHandlers.joinFamily()">
+                    <span class="material-symbols-outlined btn-icon">group_add</span>
+                    <span class="btn-text">Join Existing Family</span>
+                </button>
+
+                <!-- Footer links -->
+                <div class="footer-section">
+                    <p class="info-text">
+                        <span class="material-symbols-outlined info-icon">info</span>
+                        Start your family group and add children, or enter a code to join your partner's family.
+                    </p>
+
+                    <p class="terms-text">
+                        Your family data is encrypted and secure.
+                        <a href="#" class="link-underline">Privacy Policy</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Theme toggle -->
+        <button class="theme-toggle" onclick="ThemeManager.toggle()" title="Toggle dark mode">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+    </div>
+
+    <!-- Modular JavaScript -->
+    <script src="js/notifications.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/family-setup.js"></script>
+</body>
+
+</html>

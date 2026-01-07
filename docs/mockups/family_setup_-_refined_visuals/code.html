@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>DigitalFence Family Setup</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4361EE", // Safe Blue - A vibrant, trustworthy blue
+              secondary: "#8BB174", // Sage Green - Natural, calming accent
+              "background-light": "#F8FAFC", // Off-white requested
+              "background-dark": "#0F172A", // Deep Slate for dark mode
+              "surface-light": "rgba(255, 255, 255, 0.7)",
+              "surface-dark": "rgba(30, 41, 59, 0.6)",
+            },
+            fontFamily: {
+              display: ["'Plus Jakarta Sans'", "sans-serif"],
+              sans: ["'Plus Jakarta Sans'", "sans-serif"],
+            },
+            borderRadius: {
+              DEFAULT: "24px",
+              'xl': '24px',
+              '2xl': '32px',
+            },
+            boxShadow: {
+              'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.07)',
+              'glass-hover': '0 12px 40px 0 rgba(67, 97, 238, 0.15)',
+              'inner-light': 'inset 0 0 0 1px rgba(255, 255, 255, 0.6)',
+              'inner-dark': 'inset 0 0 0 1px rgba(255, 255, 255, 0.1)',
+            },
+            backdropBlur: {
+              'xs': '2px',
+            }
+          },
+        },
+      };
+    </script>
+<style>.glass-card {
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }.blob {
+        position: absolute;
+        filter: blur(80px);
+        z-index: 0;
+        opacity: 0.6;
+        animation: float 10s infinite ease-in-out;
+      }
+      @keyframes float {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased min-h-screen flex flex-col relative overflow-hidden transition-colors duration-300">
+<div class="blob bg-blue-200 dark:bg-blue-900/30 w-72 h-72 rounded-full top-0 -left-20 mix-blend-multiply dark:mix-blend-screen"></div>
+<div class="blob bg-green-100 dark:bg-emerald-900/20 w-80 h-80 rounded-full bottom-0 -right-20 mix-blend-multiply dark:mix-blend-screen animation-delay-2000"></div>
+<div class="blob bg-indigo-100 dark:bg-indigo-900/20 w-64 h-64 rounded-full top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 mix-blend-multiply dark:mix-blend-screen animation-delay-4000"></div>
+<main class="relative z-10 w-full max-w-md mx-auto px-6 py-12 flex flex-col h-full flex-grow justify-center">
+<div class="text-center mb-12 animate-fade-in-down">
+<h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white mb-3">
+                Welcome to <span class="text-primary">DigitalFence</span>
+</h1>
+<p class="text-lg text-slate-500 dark:text-slate-400 font-medium">
+                Let's set up your family
+            </p>
+</div>
+<div class="space-y-6 w-full">
+<button class="group w-full text-left relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] outline-none focus:ring-4 focus:ring-primary/20">
+<div class="absolute inset-0 bg-surface-light dark:bg-surface-dark glass-card shadow-glass group-hover:shadow-glass-hover transition-shadow duration-300 border border-white/50 dark:border-white/10 rounded-xl"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+<div class="relative p-6 flex items-start space-x-5 z-10">
+<div class="flex-shrink-0 mt-1">
+<div class="w-14 h-14 rounded-2xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 shadow-sm">
+<span class="material-symbols-rounded text-4xl">add</span>
+</div>
+</div>
+<div class="flex-1">
+<h2 class="text-lg font-bold text-slate-800 dark:text-white mb-1.5 group-hover:text-primary dark:group-hover:text-blue-300 transition-colors">
+                            Create a New Family
+                        </h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+                            Set up a new family group and become the primary parent
+                        </p>
+</div>
+<div class="flex-shrink-0 self-center opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+<span class="material-symbols-rounded text-primary dark:text-blue-300">chevron_right</span>
+</div>
+</div>
+</button>
+<button class="group w-full text-left relative overflow-hidden rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] outline-none focus:ring-4 focus:ring-primary/20">
+<div class="absolute inset-0 bg-surface-light dark:bg-surface-dark glass-card shadow-glass group-hover:shadow-glass-hover transition-shadow duration-300 border border-white/50 dark:border-white/10 rounded-xl"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+<div class="relative p-6 flex items-start space-x-5 z-10">
+<div class="flex-shrink-0 mt-1">
+<div class="w-14 h-14 rounded-2xl bg-indigo-50 dark:bg-indigo-900/30 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300 shadow-sm">
+<span class="material-symbols-rounded text-4xl">group</span>
+</div>
+</div>
+<div class="flex-1">
+<h2 class="text-lg font-bold text-slate-800 dark:text-white mb-1.5 group-hover:text-primary dark:group-hover:text-blue-300 transition-colors">
+                            Join an Existing Family
+                        </h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+                            View your families or join a new one with a code
+                        </p>
+</div>
+<div class="flex-shrink-0 self-center opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all duration-300">
+<span class="material-symbols-rounded text-primary dark:text-blue-300">chevron_right</span>
+</div>
+</div>
+</button>
+</div>
+<div class="mt-12 text-center">
+<p class="text-xs text-slate-400 dark:text-slate-500 font-medium">
+                Safe &amp; Secure Family Management
+            </p>
+</div>
+</main>
+
+</body></html>

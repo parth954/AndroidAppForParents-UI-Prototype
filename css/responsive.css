@@ -1,0 +1,31 @@
+/* ===================================
+   Responsive Design
+   =================================== */
+@media (max-width: 480px) {
+    .content-container {
+        padding: 16px;
+    }
+
+    .title {
+        font-size: 28px;
+    }
+
+    .subtitle {
+        font-size: 14px;
+    }
+
+    .hero-image {
+        width: 140px;
+        height: 140px;
+    }
+
+    .modal-content {
+        width: 95%;
+    }
+}
+
+@media (min-width: 768px) {
+    .content-container {
+        padding: 32px;
+    }
+}

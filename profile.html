@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Account - Parental Control</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="components/buttons.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <div class="app-container" id="app">
+        <!-- Background gradient -->
+        <div class="background-gradient"></div>
+
+        <!-- Content container -->
+        <div class="content-container">
+            <!-- Progress indicators -->
+            <div class="progress-indicators">
+                <div class="progress-bar active"></div>
+                <div class="progress-bar"></div>
+                <div class="progress-bar"></div>
+                <div class="progress-bar"></div>
+            </div>
+
+            <!-- Header -->
+            <div class="profile-header-clean">
+                <button class="back-button" onclick="window.location.href='index.html'" title="Back">
+                    <span class="material-symbols-outlined">arrow_back</span>
+                </button>
+                <h1 class="header-title">Complete Your Profile</h1>
+            </div>
+
+            <!-- Content container -->
+            <div class="content-container">
+                <!-- Avatar Selection Section -->
+                <div class="avatar-section">
+                    <p class="avatar-label">SELECT YOUR ROLE</p>
+                    <div class="avatar-options">
+                        <button class="avatar-option selected" data-role="mother"
+                            onclick="ProfileHandlers.selectAvatar('mother', event)">
+                            <div class="avatar-wrapper">
+                                <div class="avatar-circle">
+                                    <img src="assets/mother-avatar.png" alt="Mother" class="avatar-image">
+                                </div>
+                                <div class="selection-indicator"></div>
+                            </div>
+                            <span class="avatar-label-text">Mother</span>
+                        </button>
+                        <button class="avatar-option" data-role="father"
+                            onclick="ProfileHandlers.selectAvatar('father', event)">
+                            <div class="avatar-wrapper">
+                                <div class="avatar-circle">
+                                    <img src="assets/father-avatar.png" alt="Father" class="avatar-image">
+                                </div>
+                                <div class="selection-indicator"></div>
+                            </div>
+                            <span class="avatar-label-text">Father</span>
+                        </button>
+                        <button class="avatar-option" data-role="guardian"
+                            onclick="ProfileHandlers.selectAvatar('guardian', event)">
+                            <div class="avatar-wrapper">
+                                <div class="avatar-circle">
+                                    <img src="assets/guardian-avatar.png" alt="Guardian" class="avatar-image">
+                                </div>
+                                <div class="selection-indicator"></div>
+                            </div>
+                            <span class="avatar-label-text">Guardian</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Form Section -->
+                <div class="profile-content">
+                    <form class="profile-form" onsubmit="ProfileHandlers.submit(event)">
+                        <!-- Full Name -->
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" class="form-input" value="Parth Desai" placeholder="Enter your name"
+                                required>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" class="form-input" value="parth@digitalfence.care"
+                                placeholder="Enter your email" readonly>
+                            <p class="form-hint">Auto-filled from login</p>
+                        </div>
+
+                        <!-- Phone Number -->
+                        <div class="form-group">
+                            <label class="form-label">Phone Number</label>
+                            <div class="phone-input-group">
+                                <select class="country-select">
+                                    <option value="+1">🇺🇸 +1</option>
+                                    <option value="+91">🇮🇳 +91</option>
+                                    <option value="+44">🇬🇧 +44</option>
+                                </select>
+                                <input type="tel" class="form-input phone-input" placeholder="Enter phone number">
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn btn-primary">
+                            <span class="btn-text">Continue</span>
+                            <span class="material-symbols-outlined"
+                                style="margin-left: 8px; font-size: 20px;">arrow_forward</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Theme toggle -->
+            <button class="theme-toggle" onclick="ThemeManager.toggle()" title="Toggle dark mode">
+                <span class="material-symbols-outlined">dark_mode</span>
+            </button>
+        </div>
+
+        <!-- Modular JavaScript -->
+        <script src="js/notifications.js"></script>
+        <script src="js/theme.js"></script>
+        <script src="js/profile.js"></script>
+</body>
+
+</html>

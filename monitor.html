@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor - Parental Control</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/monitor.css">
+    <link rel="stylesheet" href="components/buttons.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <div class="monitor-container">
+        <!-- Header -->
+        <header class="monitor-header">
+            <button class="back-button" onclick="window.history.back()">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <div class="child-avatar-header">
+                <img src="assets/child-leo.png" alt="Leo" class="child-avatar-img">
+            </div>
+            <div class="header-info">
+                <h1 class="child-name">Leo's Activity</h1>
+                <span class="last-updated">Updated 2 min ago</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="monitor-main">
+            <!-- Date Selector -->
+            <div class="date-selector">
+                <button class="date-nav-btn" onclick="MonitorHandlers.previousDay()">
+                    <span class="material-symbols-outlined">chevron_left</span>
+                </button>
+                <div class="date-info-center">
+                    <span class="date-badge">TODAY</span>
+                    <span class="date-value">Monday, Jan 6</span>
+                </div>
+                <button class="calendar-btn" onclick="MonitorHandlers.openDatePicker()">
+                    <span class="material-symbols-outlined">calendar_month</span>
+                </button>
+            </div>
+
+            <!-- Today's Summary Card -->
+            <section class="summary-card">
+                <div class="screen-time-display">
+                    <span class="time-label">Total Screen Time</span>
+                    <span class="time-value">3h 15m</span>
+                    <span class="time-remaining">1h 45m remaining today</span>
+                </div>
+
+                <div class="insight-badge">
+                    <span class="material-symbols-outlined">lightbulb</span>
+                    <span>Mostly used for Education apps</span>
+                </div>
+            </section>
+
+            <!-- Category Breakdown with Pie Chart -->
+            <section class="category-card">
+                <div class="section-header">
+                    <h2>Usage by Category</h2>
+                    <a href="#" class="view-all-link">
+                        <span>View All</span>
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </a>
+                </div>
+                <div class="category-breakdown">
+                    <div class="pie-chart-container">
+                        <svg class="pie-chart" viewBox="0 0 100 100">
+                            <!-- Education: 46% -->
+                            <circle class="pie-segment" cx="50" cy="50" r="25" stroke="url(#grad-education)"
+                                stroke-width="50" stroke-dasharray="72.25 157" transform="rotate(-90 50 50)" />
+                            <!-- Entertainment: 38% -->
+                            <circle class="pie-segment" cx="50" cy="50" r="25" stroke="url(#grad-entertainment)"
+                                stroke-width="50" stroke-dasharray="59.66 157" stroke-dashoffset="-72.25"
+                                transform="rotate(-90 50 50)" />
+                            <!-- Social: 15% -->
+                            <circle class="pie-segment" cx="50" cy="50" r="25" stroke="url(#grad-social)"
+                                stroke-width="50" stroke-dasharray="23.55 157" stroke-dashoffset="-131.91"
+                                transform="rotate(-90 50 50)" />
+                            <defs>
+                                <linearGradient id="grad-education" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#667eea;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#764ba2;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="grad-entertainment" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f093fb;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#f5576c;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="grad-social" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4facfe;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#00f2fe;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="category-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: linear-gradient(135deg, #667eea, #764ba2);">
+                            </div>
+                            <div class="legend-info">
+                                <span class="legend-name">Education</span>
+                                <span class="legend-time">1h 30m</span>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: linear-gradient(135deg, #f093fb, #f5576c);">
+                            </div>
+                            <div class="legend-info">
+                                <span class="legend-name">Entertainment</span>
+                                <span class="legend-time">1h 15m</span>
+                            </div>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: linear-gradient(135deg, #4facfe, #00f2fe);">
+                            </div>
+                            <div class="legend-info">
+                                <span class="legend-name">Social</span>
+                                <span class="legend-time">30m</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Top Apps -->
+            <section class="apps-section">
+                <div class="section-header">
+                    <h2>Top Apps</h2>
+                    <a href="#" class="view-all-link">
+                        <span>View All</span>
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </a>
+                </div>
+                <div class="apps-grid">
+                    <div class="app-card">
+                        <div class="app-icon edu-icon">
+                            <span class="material-symbols-outlined">school</span>
+                        </div>
+                        <div class="app-details">
+                            <span class="app-name">Khan Academy</span>
+                            <span class="app-time">1h 30m</span>
+                        </div>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon ent-icon">
+                            <span class="material-symbols-outlined">play_circle</span>
+                        </div>
+                        <div class="app-details">
+                            <span class="app-name">YouTube</span>
+                            <span class="app-time">45m</span>
+                        </div>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon game-icon">
+                            <span class="material-symbols-outlined">videogame_asset</span>
+                        </div>
+                        <div class="app-details">
+                            <span class="app-name">Minecraft</span>
+                            <span class="app-time">30m</span>
+                        </div>
+                    </div>
+                    <div class="app-card">
+                        <div class="app-icon social-icon">
+                            <span class="material-symbols-outlined">chat</span>
+                        </div>
+                        <div class="app-details">
+                            <span class="app-name">Messages</span>
+                            <span class="app-time">20m</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Weekly Stats -->
+            <section class="weekly-section">
+                <h2>This Week</h2>
+                <div class="weekly-grid">
+                    <div class="weekly-stat">
+                        <span class="stat-label">Daily Average</span>
+                        <span class="stat-value">3h 20m</span>
+                    </div>
+                    <div class="weekly-stat">
+                        <span class="stat-label">Total Time</span>
+                        <span class="stat-value">21h 15m</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Theme toggle -->
+        <button class="theme-toggle" onclick="ThemeManager.toggle()" title="Toggle dark mode">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/monitor.js"></script>
+</body>
+
+</html>

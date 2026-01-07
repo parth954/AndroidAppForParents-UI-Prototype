@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings &amp; Management</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#5d8af4", // Safe Blue
+                        "background-light": "#f6f6f8", // Off-white paper
+                        "background-dark": "#101522",
+                        "sage-light": "#eff5f0", // Light Sage background for icons
+                        "sage-dark": "#6b9c7b", // Sage Green for icons
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem", 
+                        "lg": "1.5rem", 
+                        "xl": "2rem", 
+                        "2xl": "2.5rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        'soft': '0 8px 24px -6px rgba(0, 0, 0, 0.04)',
+                        'tactile': '0 2px 8px -1px rgba(0, 0, 0, 0.04)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>.no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }.glass {
+            background: rgba(246, 246, 248, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .dark .glass {
+            background: rgba(16, 21, 34, 0.85);
+        }
+    </style>
+<style>
+        body {
+          min-height: max(884px, 100dvh);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-white font-display antialiased selection:bg-primary/30">
+<div class="relative flex h-full min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<div class="sticky top-0 z-40 w-full glass border-b border-slate-200/50 dark:border-white/5 transition-all duration-300">
+<div class="flex items-center justify-between px-6 pt-12 pb-4">
+<div class="flex items-center gap-3">
+<button class="group flex items-center justify-center rounded-full p-2 transition-colors hover:bg-black/5 dark:hover:bg-white/10 active:scale-95">
+<span class="material-symbols-outlined text-slate-800 dark:text-white" style="font-size: 24px;">arrow_back_ios_new</span>
+</button>
+<h1 class="text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white">Settings</h1>
+</div>
+<div class="h-10 w-10 overflow-hidden rounded-full border-2 border-white shadow-sm dark:border-slate-700">
+<img alt="User profile picture showing a smiling woman" class="h-full w-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwIJWnPY7kBFqszjXPyG-K9bMlFFs7JcLRbyF93jJWHHX119yDTJpa_94vLviApgLQ8kgkPdc_Jvl59bxEQ6AMCJm10Y-KJfVd9KbaZ2vU_H8tU5CoORc8-z8Oul1tNj4s2ehQZDegS1TESdF-fIxIGjhz5JyWKhrGSTVQA5ShjmcU_GVFo2DrJjdnvR1VxXckbRvAmn8ubh4nT9RWAv4KfiTmdt087Otmu1ju4bzcNpyMWHy_pE9AerMe_B0HSqghBuOTMMENdJw"/>
+</div>
+</div>
+</div>
+<main class="flex-1 px-5 pt-6 space-y-8">
+<section>
+<div class="flex items-center gap-2 mb-3 ml-1">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Family Hub</h3>
+</div>
+<div class="overflow-hidden rounded-xl bg-white dark:bg-slate-800 shadow-soft border border-slate-100 dark:border-slate-700/50">
+<button class="w-full group flex items-center justify-between p-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50 active:bg-slate-100 dark:active:bg-slate-700">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sage-light dark:bg-slate-700 text-sage-dark dark:text-emerald-400 group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined filled">face</span>
+</div>
+<div class="text-left">
+<p class="font-semibold text-slate-900 dark:text-white">Profiles</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Manage 4 family members</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+<div class="ml-[4.5rem] h-px bg-slate-100 dark:bg-slate-700"></div>
+<button class="w-full group flex items-center justify-between p-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50 active:bg-slate-100 dark:active:bg-slate-700">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sage-light dark:bg-slate-700 text-sage-dark dark:text-emerald-400 group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">devices</span>
+</div>
+<div class="text-left">
+<p class="font-semibold text-slate-900 dark:text-white">Paired Devices</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">3 Active</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+<div class="ml-[4.5rem] h-px bg-slate-100 dark:bg-slate-700"></div>
+<button class="w-full group flex items-center justify-between p-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50 active:bg-slate-100 dark:active:bg-slate-700">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sage-light dark:bg-slate-700 text-sage-dark dark:text-emerald-400 group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">settings_remote</span>
+</div>
+<div class="text-left">
+<p class="font-semibold text-slate-900 dark:text-white">Device Management</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Configure &amp; organize</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+</div>
+</section>
+<section>
+<div class="flex items-center gap-2 mb-3 ml-1">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Digital Balance</h3>
+</div>
+<div class="overflow-hidden rounded-xl bg-white dark:bg-slate-800 shadow-soft border border-slate-100 dark:border-slate-700/50">
+<button class="w-full group flex items-center justify-between p-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50 active:bg-slate-100 dark:active:bg-slate-700">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-900/20 text-primary dark:text-blue-400 group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">calendar_month</span>
+</div>
+<div class="text-left">
+<p class="font-semibold text-slate-900 dark:text-white">Schedules</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Downtime &amp; limits</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+<div class="ml-[4.5rem] h-px bg-slate-100 dark:bg-slate-700"></div>
+<button class="w-full group flex items-center justify-between p-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50 active:bg-slate-100 dark:active:bg-slate-700">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-900/20 text-primary dark:text-blue-400 group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">filter_list</span>
+</div>
+<div class="text-left">
+<p class="font-semibold text-slate-900 dark:text-white">Content Filters</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Web &amp; app restrictions</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+<div class="ml-[4.5rem] h-px bg-slate-100 dark:bg-slate-700"></div>
+<button class="w-full group flex items-center justify-between p-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50 active:bg-slate-100 dark:active:bg-slate-700">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-50 dark:bg-blue-900/20 text-primary dark:text-blue-400 group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">verified_user</span>
+</div>
+<div class="text-left">
+<p class="font-semibold text-slate-900 dark:text-white">App Permissions</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Usage rights</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+</div>
+</section>
+<section>
+<div class="flex items-center gap-2 mb-3 ml-1">
+<h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Safety &amp; Security</h3>
+</div>
+<div class="overflow-hidden rounded-xl bg-white dark:bg-slate-800 shadow-soft border border-slate-100 dark:border-slate-700/50">
+<button class="w-full group flex items-center justify-between p-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50 active:bg-slate-100 dark:active:bg-slate-700">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sage-light dark:bg-slate-700 text-sage-dark dark:text-emerald-400 group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<div class="text-left">
+<p class="font-semibold text-slate-900 dark:text-white">Location Services</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Geofencing on</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+<div class="ml-[4.5rem] h-px bg-slate-100 dark:bg-slate-700"></div>
+<button class="w-full group flex items-center justify-between p-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50 active:bg-slate-100 dark:active:bg-slate-700">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-sage-light dark:bg-slate-700 text-sage-dark dark:text-emerald-400 group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">shield_person</span>
+</div>
+<div class="text-left">
+<p class="font-semibold text-slate-900 dark:text-white">Trusted Guardians</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Access control</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+<div class="ml-[4.5rem] h-px bg-slate-100 dark:bg-slate-700"></div>
+<button class="w-full group flex items-center justify-between p-4 transition-colors hover:bg-slate-50 dark:hover:bg-slate-700/50 active:bg-slate-100 dark:active:bg-slate-700">
+<div class="flex items-center gap-4">
+<div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-rose-50 dark:bg-rose-900/20 text-rose-500 dark:text-rose-400 group-hover:scale-105 transition-transform duration-300">
+<span class="material-symbols-outlined">sos</span>
+</div>
+<div class="text-left">
+<p class="font-semibold text-slate-900 dark:text-white">SOS Setup</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Quick-dial config</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500">chevron_right</span>
+</button>
+</div>
+</section>
+<div class="h-10"></div>
+</main>
+<div class="fixed bottom-0 left-0 right-0 h-1 z-30 bg-gradient-to-t from-white via-white/80 to-transparent dark:from-background-dark dark:via-background-dark/80 pointer-events-none"></div>
+</div>
+</body></html>

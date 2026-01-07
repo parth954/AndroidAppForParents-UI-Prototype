@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Hub - Parental Control</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/family-management.css">
+    <link rel="stylesheet" href="components/buttons.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/family-modals.css">
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+
+    <div class="family-container">
+        <!-- Header -->
+        <header class="family-header">
+            <button class="back-button" onclick="window.location.href='parent-dashboard.html'">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+            <h1 class="page-title">Family Hub</h1>
+            <div style="width: 40px;"></div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="family-main">
+            <!-- Family Info Card -->
+            <div class="family-info-card">
+                <div class="family-photo"
+                    style="background: linear-gradient(135deg, #667eea, #764ba2); display: flex; align-items: center; justify-content: center;">
+                    <span class="material-symbols-outlined"
+                        style="font-size: 28px; color: white; font-weight: 300;">groups</span>
+                </div>
+                <div class="family-details">
+                    <span class="family-label">YOUR FAMILY</span>
+                    <h2 class="family-name">Parth's Family</h2>
+                    <span class="family-role">Primary Parent</span>
+                </div>
+                <button class="edit-button" onclick="FamilyHandlers.editFamily()">
+                    <span class="material-symbols-outlined">edit</span>
+                </button>
+            </div>
+
+            <!-- Parents & Guardians Carousel -->
+            <section class="members-section-carousel">
+                <div class="section-header-simple">
+                    <h3 class="section-title-simple">Parents & Guardians</h3>
+                    <span class="member-count-badge-simple">2</span>
+                </div>
+                <div class="members-carousel">
+                    <!-- Primary Parent -->
+                    <div class="member-card-carousel">
+                        <div class="member-avatar-carousel">
+                            <img src="assets/mother-avatar.png" alt="Parth">
+                            <div class="role-badge-carousel">
+                                <span class="material-symbols-outlined">shield_person</span>
+                            </div>
+                        </div>
+                        <h4 class="member-name-carousel">Parth</h4>
+                        <span class="member-role-carousel primary">Primary</span>
+                    </div>
+
+                    <!-- Guardian -->
+                    <div class="member-card-carousel">
+                        <div class="member-avatar-carousel">
+                            <img src="assets/father-avatar.png" alt="John">
+                        </div>
+                        <h4 class="member-name-carousel">John</h4>
+                        <span class="member-role-carousel">Guardian</span>
+                    </div>
+
+                    <!-- Add Guardian Card -->
+                    <div class="member-card-carousel add-card" onclick="FamilyHandlers.inviteGuardian()">
+                        <div class="add-icon-wrapper">
+                            <span class="material-symbols-outlined">add</span>
+                        </div>
+                        <h4 class="add-label">Add Guardian</h4>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Actions -->
+            <section class="actions-section-refined">
+                <h3 class="section-title-simple">Quick Actions</h3>
+                <div class="actions-list-refined">
+                    <button class="action-item-refined primary" onclick="FamilyHandlers.inviteGuardian()">
+                        <div class="action-icon-refined">
+                            <span class="material-symbols-outlined">person_add</span>
+                        </div>
+                        <div class="action-text-refined">
+                            <span class="action-label-refined">Invite Guardian</span>
+                            <span class="action-desc-refined">Add another parent to your family</span>
+                        </div>
+                        <span class="material-symbols-outlined arrow">chevron_right</span>
+                    </button>
+
+                    <button class="action-item-refined" onclick="FamilyHandlers.manageRequests()">
+                        <div class="action-icon-refined">
+                            <span class="material-symbols-outlined">mail</span>
+                        </div>
+                        <div class="action-text-refined">
+                            <span class="action-label-refined">Manage Requests</span>
+                            <span class="action-desc-refined">2 pending requests</span>
+                        </div>
+                        <div class="action-badge-refined">2</div>
+                        <span class="material-symbols-outlined arrow">chevron_right</span>
+                    </button>
+                </div>
+            </section>
+
+
+            <!-- Join Family Card -->
+            <div class="join-family-card-clean">
+                <h3 class="join-card-title">Want to join another family?</h3>
+                <p class="join-card-desc">Connect with an existing group using an invite code.</p>
+                <button class="join-card-button" onclick="FamilyHandlers.joinFamily()">
+                    <span class="material-symbols-outlined">group_add</span>
+                    Join Existing Family
+                </button>
+            </div>
+
+            <!-- Delete Family Card -->
+            <div class="delete-family-card-clean">
+                <button class="delete-card-button" onclick="FamilyHandlers.deleteFamily()">
+                    <span class="material-symbols-outlined">delete_forever</span>
+                    Delete Family
+                </button>
+                <p class="delete-card-warning">This action cannot be undone</p>
+            </div>
+        </main>
+
+        <!-- Theme toggle -->
+        <button class="theme-toggle" onclick="ThemeManager.toggle()" title="Toggle dark mode">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/theme.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/family-management.js"></script>
+
+
+    <!-- Invitation Code Modal -->
+    <div id="invitation-modal" class="invitation-modal-overlay">
+        <div class="invitation-modal">
+            <div class="modal-header">
+                <div class="modal-icon">
+                    <span class="material-symbols-outlined">qr_code</span>
+                </div>
+                <h2 class="modal-title">Invitation Code</h2>
+                <p class="modal-subtitle">Share this code with a guardian to join your family</p>
+            </div>
+            <div class="code-display-large">
+                <div class="code-number" id="modal-code-display">------</div>
+            </div>
+            <div class="code-actions">
+                <button class="modal-btn btn-copy" onclick="FamilyHandlers.copyModalCode()">
+                    <span class="material-symbols-outlined">content_copy</span>
+                    Copy Code
+                </button>
+                <button class="modal-btn btn-close" onclick="FamilyHandlers.closeInvitationModal()">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Join Requests Modal -->
+    <div id="requests-modal" class="requests-modal-overlay">
+        <div class="requests-modal">
+            <div class="requests-header">
+                <h2 class="requests-title">Pending Requests</h2>
+                <button class="close-modal-btn" onclick="FamilyHandlers.closeRequestsModal()">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div id="requests-list">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

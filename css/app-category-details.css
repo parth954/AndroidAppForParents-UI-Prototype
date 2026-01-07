@@ -1,0 +1,422 @@
+/* ===================================
+   App Category Details - Premium Design
+   =================================== */
+
+.details-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 448px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    padding-bottom: 40px;
+}
+
+/* Header */
+.page-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background-color: rgba(246, 246, 248, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+}
+
+.dark .page-header {
+    background-color: rgba(16, 21, 34, 0.8);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.back-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--color-text-primary);
+}
+
+.dark .back-button {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.header-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.save-button {
+    background: none;
+    border: none;
+    color: var(--color-primary);
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* Main Content */
+.main-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Hero Icon */
+.hero-icon-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.hero-cat-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.hero-cat-icon .material-symbols-outlined {
+    font-size: 36px;
+}
+
+.hero-cat-name {
+    font-size: 24px;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+/* Common Category Colors */
+.hero-cat-icon.education {
+    background-color: rgba(16, 185, 129, 0.2);
+    color: #10B981;
+}
+
+.hero-cat-icon.entertainment {
+    background-color: rgba(244, 63, 94, 0.2);
+    color: #F43F5E;
+}
+
+.hero-cat-icon.gaming {
+    background-color: rgba(139, 92, 246, 0.2);
+    color: #8B5CF6;
+}
+
+.hero-cat-icon.social {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #3B82F6;
+}
+
+.hero-cat-icon.creativity {
+    background-color: rgba(245, 158, 11, 0.2);
+    color: #F59E0B;
+}
+
+.hero-cat-icon.utilities {
+    background-color: rgba(107, 114, 128, 0.2);
+    color: #6B7280;
+}
+
+/* Control Card */
+.control-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.85));
+    backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 24px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+}
+
+.dark .control-card {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.95), rgba(30, 41, 59, 0.85));
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.control-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+.header-text h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 4px 0;
+}
+
+.header-text p {
+    font-size: 13px;
+    color: var(--color-text-tertiary);
+    margin: 0;
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 28px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 24px;
+    width: 24px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input:checked+.slider {
+    background-color: var(--color-primary);
+}
+
+input:checked+.slider:before {
+    transform: translateX(22px);
+}
+
+/* Time Slider */
+.limit-slider-container {
+    transition: opacity 0.3s;
+}
+
+.limit-slider-container.disabled {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.time-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#time-value {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    font-variant-numeric: tabular-nums;
+}
+
+.daily-badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.time-range {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.05);
+    /* Track color */
+    border-radius: 5px;
+    outline: none;
+    margin-bottom: 12px;
+}
+
+.dark .time-range {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.time-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--color-primary);
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(93, 138, 244, 0.4);
+    border: 3px solid white;
+}
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+}
+
+/* Apps Section */
+.apps-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.section-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.count-badge {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 4px 10px;
+    border-radius: 100px;
+}
+
+/* Search Box */
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background-color: rgba(255, 255, 255, 0.6);
+    padding: 12px 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .search-box {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.search-box input {
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 14px;
+    color: var(--color-text-primary);
+    width: 100%;
+}
+
+.search-box .material-symbols-outlined {
+    font-size: 20px;
+    color: var(--color-text-tertiary);
+}
+
+/* Apps List */
+.apps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.app-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background-color: white;
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+}
+
+.dark .app-item {
+    background-color: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.app-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.app-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    object-fit: cover;
+    background-color: #f1f1f1;
+}
+
+.app-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.app-toggle {
+    /* Reuse toggle switch style but smaller if needed */
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+
+.app-toggle input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.app-toggle .slider {
+    border-radius: 24px;
+}
+
+.app-toggle .slider:before {
+    height: 20px;
+    width: 20px;
+    left: 2px;
+    bottom: 2px;
+}
+
+.app-toggle input:checked+.slider:before {
+    transform: translateX(20px);
+}

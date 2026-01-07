@@ -1,0 +1,298 @@
+/* ===================================
+   Settings Screen
+   =================================== */
+
+.settings-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg-light);
+    color: var(--color-text-primary);
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+    max-width: 448px;
+    margin: 0 auto;
+}
+
+/* Header */
+.settings-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background-color: rgba(246, 246, 248, 0.8);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+}
+
+.dark .settings-header {
+    background-color: rgba(16, 21, 34, 0.8);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.back-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+}
+
+.dark .back-button {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.back-button:hover {
+    background-color: white;
+    transform: scale(1.05);
+}
+
+.dark .back-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.page-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+    letter-spacing: -0.3px;
+}
+
+/* Main Content */
+.settings-main {
+    position: relative;
+    z-index: 10;
+    flex: 1;
+    width: 100%;
+    max-width: 448px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* Settings Section */
+.settings-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.section-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0;
+    padding: 0 4px;
+}
+
+/* Settings List */
+.settings-list {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+}
+
+.dark .settings-list {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.8), rgba(30, 41, 59, 0.6));
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Setting Item */
+.setting-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 16px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: left;
+    width: 100%;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.dark .setting-item {
+    border-bottom-color: rgba(255, 255, 255, 0.04);
+}
+
+.setting-item:last-child {
+    border-bottom: none;
+}
+
+.setting-item:hover {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+.dark .setting-item:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.setting-item:active {
+    background: rgba(0, 0, 0, 0.04);
+}
+
+.dark .setting-item:active {
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.setting-item .material-symbols-outlined:first-child {
+    font-size: 22px;
+    color: var(--color-text-secondary);
+    flex-shrink: 0;
+}
+
+.setting-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    min-width: 0;
+}
+
+.setting-label {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.setting-desc {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.setting-item .material-symbols-outlined:last-child {
+    font-size: 20px;
+    color: var(--color-text-tertiary);
+    flex-shrink: 0;
+}
+
+/* Logout Section */
+.logout-section {
+    margin-top: 8px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dark .logout-section {
+    border-top-color: rgba(255, 255, 255, 0.06);
+}
+
+.logout-button {
+    width: 100%;
+    padding: 14px 16px;
+    border-radius: 14px;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.4));
+    backdrop-filter: blur(20px);
+    color: var(--color-error);
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.dark .logout-button {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.6), rgba(30, 41, 59, 0.4));
+    border-color: rgba(239, 68, 68, 0.3);
+}
+
+.logout-button:hover {
+    background: rgba(239, 68, 68, 0.08);
+    border-color: rgba(239, 68, 68, 0.4);
+}
+
+.dark .logout-button:hover {
+    background: rgba(239, 68, 68, 0.12);
+}
+
+.logout-button .material-symbols-outlined {
+    font-size: 20px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.settings-section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.settings-section:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.settings-section:nth-child(2) {
+    animation-delay: 0.05s;
+}
+
+.settings-section:nth-child(3) {
+    animation-delay: 0.1s;
+}
+
+.settings-section:nth-child(4) {
+    animation-delay: 0.15s;
+}
+
+.settings-section:nth-child(5) {
+    animation-delay: 0.2s;
+}
+/* Device Management Item Styling */
+.device-management-item .device-icon {
+    color: var(--color-primary);
+    font-size: 24px;
+}
+
+.device-management-item .setting-label {
+    font-weight: 700;
+}
+
+/* Profile item with more info */
+.profile-item .setting-label {
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.profile-item .setting-desc {
+    font-size: 13px;
+    line-height: 1.4;
+}

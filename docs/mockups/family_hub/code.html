@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Family Hub</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#4276f0", // Safe Blue
+                        "primary-dark": "#3560c5",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                        "sage": "#8ba88e", // Sage Green Accent
+                        "sage-light": "#e8f2ea",
+                        "amber-soft": "#d99a46",
+                        "surface-glass": "rgba(255, 255, 255, 0.8)",
+                        "surface-glass-dark": "rgba(30, 41, 59, 0.8)",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "2xl": "1.75rem",
+                        "3xl": "2rem",
+                        "full": "9999px"
+                    },
+                    boxShadow: {
+                        "soft": "0 8px 30px -4px rgba(0, 0, 0, 0.04)",
+                        "tactile": "0 2px 4px 0 rgba(0,0,0,0.02), 0 0 0 1px rgba(0,0,0,0.02)",
+                        "tactile-active": "inset 0 1px 3px 0 rgba(0,0,0,0.05)",
+                    },
+                    spacing: {
+                        '4.5': '1.125rem',
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+        .glass-header {
+             backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+        body {
+            min-height: max(884px, 100dvh);
+            background-attachment: fixed;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d121b] dark:text-white font-display min-h-screen flex flex-col selection:bg-primary/30 antialiased">
+<div class="fixed top-0 left-0 w-full h-[500px] bg-gradient-to-b from-blue-50 to-transparent dark:from-blue-900/10 pointer-events-none z-0"></div>
+<div class="fixed top-[-5%] right-[-5%] w-[60%] h-[50%] rounded-full bg-sage/5 blur-3xl pointer-events-none z-0"></div>
+<div class="relative z-20 flex items-center px-6 py-4 justify-between sticky top-0 glass-header bg-white/80 dark:bg-[#101622]/80 border-b border-white/40 dark:border-white/5">
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full bg-white/60 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 transition-all text-[#0d121b] dark:text-white shadow-tactile hover:shadow-md">
+<span class="material-symbols-outlined text-[20px] font-medium">arrow_back</span>
+</button>
+<h2 class="text-[#0d121b] dark:text-white text-[17px] font-bold tracking-tight">Family Hub</h2>
+<button class="flex size-10 shrink-0 items-center justify-center rounded-full bg-white/60 hover:bg-white dark:bg-white/5 dark:hover:bg-white/10 transition-all text-[#0d121b] dark:text-white shadow-tactile hover:shadow-md group">
+<span class="material-symbols-outlined text-[22px] font-medium group-hover:scale-110 transition-transform">qr_code_scanner</span>
+</button>
+</div>
+<div class="relative z-10 flex flex-col gap-6 px-5 py-6 w-full max-w-md mx-auto">
+<div class="group relative overflow-hidden rounded-[2rem] bg-white/80 dark:bg-slate-800/80 glass-panel shadow-soft ring-1 ring-white/50 dark:ring-white/5 p-1 transition-transform active:scale-[0.99] duration-200">
+<div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-br from-primary/5 to-transparent rounded-bl-full pointer-events-none"></div>
+<div class="flex items-center gap-5 p-5">
+<div class="bg-center bg-no-repeat bg-cover rounded-2xl h-[4.5rem] w-[4.5rem] shadow-sm shrink-0 ring-2 ring-white dark:ring-white/10" data-alt="A happy family portrait photo showing parents and children smiling outdoors" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgAM69CqQgR1DFFcP5s9EBRtyUydlh0gPstlV3hG-yqJr4ieqX8kOBiM2XxVqvLOpWd1WRg1ls1LG61rTvBDgDFlppXwZPD0nytsmDBus7ApN1o9N-RgI7-wDqBoU154sVzr9osOHwxstz8fGpUz6Ige9zXDtSNCWWot2XFtJurO5o0k3xkXP36h_p-7o8VWWaVYcCVdrFKmU62fVd_lXTFhssiu2JaPQiZ5a50t8uFF8hz7uRK2Zcls6WQlfyrk3LPq5cQk7oH28");'>
+</div>
+<div class="flex flex-col flex-1 min-w-0 justify-center">
+<p class="text-[11px] font-bold uppercase tracking-widest text-primary mb-1">Your Family</p>
+<h3 class="text-[#0d121b] dark:text-white text-[19px] font-bold leading-tight mb-0.5 truncate">Parth's Family</h3>
+<p class="text-slate-500 dark:text-slate-400 text-[13px] font-medium">Primary Parent</p>
+</div>
+<button class="flex items-center justify-center size-9 rounded-full bg-slate-50 dark:bg-slate-700/50 text-slate-400 hover:text-primary hover:bg-primary/5 transition-all">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-3.5">
+<h3 class="text-[#0d121b] dark:text-white text-[15px] font-bold px-1 flex items-center gap-2 tracking-tight">
+<span class="material-symbols-outlined text-primary text-[20px]">bolt</span> Quick Actions
+            </h3>
+<div class="grid grid-cols-2 gap-3.5">
+<button class="flex flex-col justify-between p-5 h-[9.5rem] rounded-[1.5rem] bg-primary shadow-lg shadow-primary/25 text-left group hover:bg-primary-dark transition-colors relative overflow-hidden">
+<div class="absolute -right-6 -top-6 w-24 h-24 bg-white/15 rounded-full blur-2xl"></div>
+<div class="bg-white/20 w-11 h-11 rounded-[14px] flex items-center justify-center backdrop-blur-md shadow-sm">
+<span class="material-symbols-outlined text-white text-[22px]">person_add</span>
+</div>
+<div class="relative z-10">
+<p class="text-white text-[17px] font-bold leading-tight w-[90%] tracking-tight">Invite New Guardian</p>
+</div>
+</button>
+<button class="flex flex-col justify-between p-5 h-[9.5rem] rounded-[1.5rem] bg-white/90 dark:bg-slate-800/90 shadow-soft ring-1 ring-slate-100 dark:ring-slate-700 text-left group hover:ring-primary/30 transition-all">
+<div class="flex items-start justify-between w-full">
+<div class="bg-slate-100 dark:bg-slate-700/50 w-11 h-11 rounded-[14px] flex items-center justify-center text-slate-700 dark:text-slate-300 group-hover:bg-primary/5 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-[22px]">mail</span>
+</div>
+<div class="bg-primary/10 text-primary text-[11px] font-bold px-2 py-1 rounded-full">2</div>
+</div>
+<div>
+<p class="text-[#0d121b] dark:text-white text-[17px] font-bold leading-tight tracking-tight">Manage Requests</p>
+<p class="text-[13px] text-slate-500 dark:text-slate-400 mt-1 font-medium">Pending actions</p>
+</div>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-3.5">
+<div class="flex items-center justify-between px-1 mb-1">
+<h3 class="text-[#0d121b] dark:text-white text-[15px] font-bold tracking-tight">Family Members</h3>
+<span class="text-[11px] font-semibold text-slate-500 bg-slate-100 dark:bg-slate-800 dark:text-slate-400 px-2.5 py-1 rounded-full">2 Members</span>
+</div>
+<div class="flex flex-col gap-3">
+<div class="group flex items-center gap-4 p-4 rounded-[1.25rem] bg-white/80 dark:bg-slate-800/80 glass-panel shadow-sm ring-1 ring-black/5 dark:ring-white/5 hover:bg-white hover:ring-primary/20 dark:hover:bg-slate-800/90 transition-all cursor-default">
+<div class="relative">
+<div class="bg-cover bg-center h-14 w-14 rounded-2xl ring-2 ring-white dark:ring-slate-700 shadow-sm transition-transform group-hover:scale-105" data-alt="Portrait of Hari Patel, the primary parent" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCS91Pp_vT32PnEAhcdw9xc9povFOCDyWg9UbMzGAZnv00Wy-y1PAViAutpv1QPUYiY_vw4wlHhKhlkTH44jua6IAh5p0RCVq_THNoAdo7gEkfyuSgGqknpf2ImAqhbqhfrm-Myoms8DioFLCv0-lc-b2BiBemOK7NXIKRVMY-K03-4qzZ-zcObcA8WJSc0wsC6wIt80U6O1BXGfvDxTwDGHXa8_7ROcjNkOoWAGul-bnhvMHf1WSeiweSR7JD0bCsASSmKhIgW7wY");'></div>
+<div class="absolute -bottom-1 -right-1 bg-primary text-white p-1 rounded-full border-[3px] border-white dark:border-slate-800 flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-[10px] font-bold">shield_person</span>
+</div>
+</div>
+<div class="flex flex-col flex-1 gap-0.5">
+<h4 class="text-[#0d121b] dark:text-white font-bold text-[16px]">Hari Patel</h4>
+<div class="flex items-center gap-2">
+<span class="text-primary dark:text-blue-300 text-[12px] font-semibold">Primary Parent</span>
+</div>
+</div>
+<button class="size-9 flex items-center justify-center rounded-full bg-slate-50 dark:bg-slate-700/50 text-slate-400 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-all opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[18px]">edit_square</span>
+</button>
+</div>
+<div class="group flex items-center gap-4 p-4 rounded-[1.25rem] bg-white/80 dark:bg-slate-800/80 glass-panel shadow-sm ring-1 ring-black/5 dark:ring-white/5 hover:bg-white hover:ring-primary/20 dark:hover:bg-slate-800/90 transition-all cursor-default">
+<div class="relative">
+<div class="bg-cover bg-center h-14 w-14 rounded-2xl ring-2 ring-white dark:ring-slate-700 shadow-sm transition-transform group-hover:scale-105" data-alt="Portrait of the partner guardian" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCDMLd6e9DSvs6Dh_cYKBgYHDws_Ie6KdgvU6VoAQ4xNR9Q8Gt4SSpkCoSry9mgOWE79lH0a5YY1T0l4T615NyRTM32_f5TIptMkyQYKU4_dSi8lMRCCml-Q3t5p9pvPKB0rqOx-6XKMp4lNFatb3vIVNaCNqP0_6ZZ03oUGuZ4_hOQhrcHsxAg_wb3F2pbEA1vtULsFzeGxfgDHjxR3Ax2qQplraSnynnLi2dxHAhRoIMrXqde-0VgParAzFwN1v7tNkuzXuurs2Q");'></div>
+</div>
+<div class="flex flex-col flex-1 gap-0.5">
+<h4 class="text-[#0d121b] dark:text-white font-bold text-[16px]">Priya Patel</h4>
+<div class="flex items-center gap-2">
+<span class="text-slate-500 dark:text-slate-400 text-[12px] font-semibold">Guardian</span>
+</div>
+</div>
+<button class="size-9 flex items-center justify-center rounded-full bg-slate-50 dark:bg-slate-700/50 text-slate-400 dark:text-slate-400 hover:bg-primary/10 hover:text-primary transition-all opacity-0 group-hover:opacity-100">
+<span class="material-symbols-outlined text-[18px]">edit_square</span>
+</button>
+</div>
+</div>
+</div>
+<div class="relative overflow-hidden rounded-[1.5rem] bg-white/60 dark:bg-slate-800/60 glass-panel shadow-soft ring-1 ring-black/5 dark:ring-white/5 p-5 text-center flex flex-col gap-4">
+<div class="absolute -top-8 -right-8 w-32 h-32 bg-sage/10 rounded-full blur-2xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col gap-1">
+<h3 class="text-[#0d121b] dark:text-white text-[16px] font-bold tracking-tight">Want to join another family?</h3>
+<p class="text-slate-500 dark:text-slate-400 text-[13px] font-medium">Connect with an existing group using an invite code.</p>
+</div>
+<button class="relative z-10 w-full py-3.5 px-4 rounded-[1rem] bg-primary text-white font-bold text-[14px] shadow-lg shadow-primary/20 hover:bg-primary-dark transition-all flex items-center justify-center gap-2 active:scale-[0.98]">
+<span class="material-symbols-outlined text-[20px]">group_add</span>
+            Join Existing Family
+    </button>
+</div>
+<div class="flex flex-col items-center gap-5 pt-6 border-t border-slate-200/60 dark:border-slate-700/60 mt-auto mb-4">
+<button class="w-full py-3.5 px-4 rounded-[1rem] border border-red-100 dark:border-red-900/30 text-red-500 dark:text-red-400 font-semibold text-[14px] hover:bg-red-50 dark:hover:bg-red-900/10 transition-colors flex items-center justify-center gap-2.5 group bg-white/50 dark:bg-transparent">
+<span class="material-symbols-outlined text-[20px] group-hover:scale-110 transition-transform">delete_forever</span>
+                Delete Family
+            </button>
+<p class="text-[11px] leading-relaxed text-slate-400 text-center max-w-[280px]">
+                Deleting the family will remove all child profiles and restrictions. This action cannot be undone.
+            </p>
+</div>
+</div>
+</body></html>

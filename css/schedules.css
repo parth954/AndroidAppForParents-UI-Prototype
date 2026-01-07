@@ -1,0 +1,376 @@
+/* ===================================
+   Schedules - Premium Design
+   =================================== */
+
+.schedules-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    max-width: 448px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    padding-bottom: 100px;
+    /* Space for FAB */
+}
+
+/* Header */
+.page-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    background-color: rgba(246, 246, 248, 0.85);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+}
+
+.dark .page-header {
+    background-color: rgba(16, 21, 34, 0.85);
+    border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.back-button {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    color: var(--color-text-primary);
+    flex-shrink: 0;
+}
+
+.back-button:hover {
+    background-color: white;
+    transform: scale(1.05);
+}
+
+.dark .back-button {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.header-text-container {
+    text-align: center;
+}
+
+.header-title {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.header-subtitle {
+    font-size: 12px;
+    color: var(--color-text-tertiary);
+    margin: 2px 0 0 0;
+}
+
+/* Main Content List */
+.main-content {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Schedule Card */
+.schedule-card {
+    background: white;
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.dark .schedule-card {
+    background: rgba(30, 41, 59, 0.6);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Active State styling (Purple) */
+.schedule-card.active-state {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.05));
+    border-color: rgba(139, 92, 246, 0.3);
+    box-shadow: 0 8px 24px rgba(139, 92, 246, 0.15);
+}
+
+.dark .schedule-card.active-state {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(139, 92, 246, 0.05));
+}
+
+/* Header Section */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-circle {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.icon-symbol {
+    font-size: 20px;
+}
+
+/* Icon Colors */
+.schedule-card.type-downtime .icon-circle {
+    /* Orange-ish for downtime/alert */
+    color: #F97316;
+    /* No bg circle in mockup, just icon, but looks better with subtle one? 
+       Mockup has icon next to text. Let's stick closer to mockup layout: icon is inline or next to it. */
+}
+
+/* Implementing mockup style: Icon is distinct next to text */
+.icon-circle {
+    background: transparent;
+    width: auto;
+    height: auto;
+    margin-right: 4px;
+}
+
+.schedule-card.type-downtime .icon-symbol {
+    color: #EA580C;
+}
+
+/* Orange */
+.schedule-card.type-bedtime .icon-symbol {
+    color: #4F46E5;
+}
+
+/* Indigo/Blue */
+
+.title-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.schedule-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 2px 0;
+}
+
+.schedule-days {
+    font-size: 13px;
+    color: var(--color-text-tertiary);
+    margin: 0;
+}
+
+.header-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+/* Badges */
+.type-badge {
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.schedule-card.type-downtime .type-badge {
+    background-color: #EA580C;
+    color: white;
+}
+
+.schedule-card.type-bedtime .type-badge {
+    background-color: #312E81;
+    color: white;
+}
+
+.dark .schedule-card.type-bedtime .type-badge {
+    background-color: #4338CA;
+}
+
+.status-badge {
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 10px;
+    font-weight: 800;
+    text-transform: uppercase;
+    background-color: #3B82F6;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.hidden {
+    display: none;
+}
+
+/* Details Row */
+.card-details-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.detail-pill {
+    background-color: rgba(0, 0, 0, 0.04);
+    border-radius: 12px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+}
+
+.dark .detail-pill {
+    background-color: rgba(255, 255, 255, 0.06);
+}
+
+.detail-pill .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--color-text-tertiary);
+}
+
+.time-text,
+.apps-text {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* Footer & Toggle */
+.card-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dark .card-footer {
+    border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+.status-text {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+}
+
+/* Toggle Switch */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 48px;
+    height: 28px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.dark .slider {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 22px;
+    width: 22px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+input:checked+.slider {
+    background-color: var(--color-primary);
+}
+
+input:checked+.slider:before {
+    transform: translateX(20px);
+}
+
+/* Floating Action Button */
+.fab-add {
+    position: fixed;
+    bottom: 32px;
+    right: 24px;
+    /* Center it if desired like the mockup seems to capture or bottom right standard? 
+       Mockup has button "Add Schedule" which looks like a wide FAB or a persistent bottom bar. 
+       Actually mockup shows a blue button with "+ Add Schedule". Let's match that. */
+    width: calc(100% - 48px);
+    max-width: 400px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background: linear-gradient(135deg, #4F46E5, #3B82F6);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    /* Center horizontally? No, flex centers items. */
+    justify-content: center;
+    gap: 8px;
+
+    font-size: 16px;
+    font-weight: 700;
+    box-shadow: 0 8px 24px rgba(79, 70, 229, 0.4);
+    cursor: pointer;
+    z-index: 100;
+    transition: transform 0.2s;
+}
+
+.fab-add:hover {
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 12px 32px rgba(79, 70, 229, 0.5);
+}
+
+.fab-add .material-symbols-outlined {
+    font-size: 24px;
+}

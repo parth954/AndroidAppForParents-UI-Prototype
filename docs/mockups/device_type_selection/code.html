@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Device Type Selection</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration -->
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#5d8af4",
+              "background-light": "#f6f6f8",
+              "background-dark": "#101522",
+              "sage": "#9CAF88", // Custom Sage Green based on request
+            },
+            fontFamily: {
+              "display": ["Plus Jakarta Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+            backgroundImage: {
+                'soft-gradient': 'linear-gradient(135deg, #f6f6f8 0%, #eef2ff 100%)',
+                'soft-gradient-dark': 'linear-gradient(135deg, #101522 0%, #1a2035 100%)',
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .selected-card {
+            background: rgba(156, 175, 136, 0.15) !important; /* Sage tint */
+            border: 2px solid #9CAF88 !important; /* Sage border */
+        }
+        
+        .dark .selected-card {
+             background: rgba(156, 175, 136, 0.2) !important;
+             border: 2px solid #9CAF88 !important;
+        }
+
+        /* Abstract blobs for background depth */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            z-index: 0;
+            opacity: 0.6;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="antialiased font-display bg-soft-gradient dark:bg-soft-gradient-dark text-slate-900 dark:text-white min-h-screen relative overflow-hidden selection:bg-primary selection:text-white">
+<!-- Background Ambient Blobs -->
+<div class="blob bg-blue-200/50 dark:bg-blue-900/20 w-96 h-96 -top-20 -left-20"></div>
+<div class="blob bg-green-100/50 dark:bg-green-900/20 w-80 h-80 top-40 -right-20"></div>
+<div class="blob bg-indigo-100/50 dark:bg-indigo-900/20 w-full h-64 bottom-0 left-0"></div>
+<div class="relative z-10 flex flex-col min-h-screen max-w-md mx-auto px-6 py-6 group/design-root">
+<!-- PageIndicators -->
+<div class="flex w-full flex-row items-center justify-center gap-2 py-4">
+<div class="h-1.5 w-12 rounded-full bg-primary shadow-sm transition-all duration-300"></div>
+<div class="h-1.5 w-12 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+<div class="h-1.5 w-12 rounded-full bg-slate-200 dark:bg-slate-700"></div>
+</div>
+<!-- HeadlineText -->
+<div class="flex flex-col items-center mt-4 mb-6">
+<h2 class="text-slate-900 dark:text-white tracking-tight text-[28px] font-bold leading-tight text-center">
+                Let's set up your family garden.
+            </h2>
+<p class="text-slate-500 dark:text-slate-400 text-base font-medium leading-normal pt-3 text-center">
+                Who will be using this device primarily?
+            </p>
+</div>
+<!-- Cards Container -->
+<div class="flex flex-col gap-5 flex-grow">
+<!-- Parent Card (Unselected State Example) -->
+<button class="group relative w-full text-left transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] outline-none focus-visible:ring-4 focus-visible:ring-primary/20 rounded-2xl">
+<div class="glass-card flex flex-row items-center p-5 rounded-2xl h-full gap-5">
+<!-- Icon Container -->
+<div class="flex-shrink-0 h-16 w-16 rounded-full bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+<span class="material-symbols-outlined text-[32px]">shield</span>
+</div>
+<!-- Text Content -->
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">
+                            Parent Device
+                        </p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-snug">
+                            Monitor activity, set limits, and manage family safety.
+                        </p>
+</div>
+<!-- Radio Circle Indicator (Empty) -->
+<div class="ml-auto flex-shrink-0 h-6 w-6 rounded-full border-2 border-slate-300 dark:border-slate-600 group-hover:border-primary transition-colors"></div>
+</div>
+</button>
+<!-- Child Card (Selected State Example) -->
+<button class="group relative w-full text-left transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] outline-none focus-visible:ring-4 focus-visible:ring-sage/20 rounded-2xl">
+<!-- Using selected-card class for Sage Green state -->
+<div class="glass-card selected-card flex flex-row items-center p-5 rounded-2xl h-full gap-5">
+<!-- Icon Container -->
+<div class="flex-shrink-0 h-16 w-16 rounded-full bg-sage/20 dark:bg-sage/30 flex items-center justify-center text-sage dark:text-green-100">
+<span class="material-symbols-outlined text-[32px]">toys</span>
+</div>
+<!-- Text Content -->
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-tight">
+                            Child Device
+                        </p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium leading-snug">
+                            A safe space to explore, learn, and play protected.
+                        </p>
+</div>
+<!-- Radio Circle Indicator (Checked) -->
+<div class="ml-auto flex-shrink-0 h-6 w-6 rounded-full bg-sage flex items-center justify-center shadow-sm">
+<span class="material-symbols-outlined text-white text-[16px] font-bold">check</span>
+</div>
+</div>
+</button>
+</div>
+<!-- Footer / CTA -->
+<div class="mt-8 mb-6">
+<button class="w-full bg-primary hover:bg-blue-600 text-white text-lg font-bold py-4 px-6 rounded-full shadow-lg shadow-blue-500/20 active:shadow-none active:translate-y-0.5 transition-all duration-200">
+                Continue
+            </button>
+</div>
+</div>
+</body></html>

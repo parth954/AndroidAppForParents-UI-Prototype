@@ -1,0 +1,344 @@
+/* ===================================
+   Invitation Modal
+   =================================== */
+
+.invitation-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+.invitation-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.invitation-modal {
+    background: white;
+    border-radius: 24px;
+    padding: 32px;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+    transition: transform 0.3s;
+}
+
+.dark .invitation-modal {
+    background: rgba(30, 35, 50, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.invitation-modal-overlay.active .invitation-modal {
+    transform: scale(1);
+}
+
+.modal-header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.modal-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), #2563EB);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+}
+
+.modal-icon .material-symbols-outlined {
+    font-size: 32px;
+    color: white;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 8px 0;
+}
+
+.modal-subtitle {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.code-display-large {
+    background: rgba(59, 130, 246, 0.05);
+    border: 2px dashed rgba(59, 130, 246, 0.2);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    margin: 24px 0;
+}
+
+.code-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--color-primary);
+    letter-spacing: 8px;
+    font-variant-numeric: tabular-nums;
+}
+
+.code-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 14px;
+    border-radius: 12px;
+    border: none;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-copy {
+    background: var(--color-primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.btn-copy:hover {
+    background: #2563EB;
+    transform: translateY(-1px);
+}
+
+.btn-close {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-text-secondary);
+}
+
+.dark .btn-close {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.dark .btn-close:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===================================
+   Requests Modal
+   =================================== */
+
+.requests-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s;
+}
+
+@media (min-width: 640px) {
+    .requests-modal-overlay {
+        align-items: center;
+    }
+}
+
+.requests-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.requests-modal {
+    background: white;
+    border-radius: 24px 24px 0 0;
+    padding: 24px;
+    max-width: 500px;
+    width: 100%;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.2);
+    transform: translateY(100%);
+    transition: transform 0.3s;
+}
+
+@media (min-width: 640px) {
+    .requests-modal {
+        border-radius: 24px;
+        transform: scale(0.9);
+    }
+}
+
+.dark .requests-modal {
+    background: rgba(30, 35, 50, 0.98);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.requests-modal-overlay.active .requests-modal {
+    transform: translateY(0);
+}
+
+@media (min-width: 640px) {
+    .requests-modal-overlay.active .requests-modal {
+        transform: scale(1);
+    }
+}
+
+.requests-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.requests-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+}
+
+.close-modal-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.dark .close-modal-btn {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.close-modal-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.dark .close-modal-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.request-card {
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.dark .request-card {
+    background: rgba(255, 255, 255, 0.03);
+    border-color: rgba(255, 255, 255, 0.05);
+}
+
+.request-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.request-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--color-primary), #2563EB);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.request-details h4 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0 0 4px 0;
+}
+
+.request-details p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin: 0;
+}
+
+.request-actions-inline {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.request-btn-small {
+    flex: 1;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.btn-reject-small {
+    background: transparent;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    color: var(--color-text-secondary);
+}
+
+.dark .btn-reject-small {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-approve-small {
+    background: var(--color-primary);
+    color: white;
+}
+
+.btn-approve-small:hover {
+    background: #2563EB;
+}
+
+.no-requests {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--color-text-tertiary);
+}
+
+.no-requests .material-symbols-outlined {
+    font-size: 48px;
+    opacity: 0.3;
+    margin-bottom: 12px;
+}

@@ -1,0 +1,198 @@
+/* ===================================
+   Sign-Up Screen Styles
+   =================================== */
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-bg-light);
+    color: var(--color-text-primary);
+    transition: background-color 0.3s, color 0.3s;
+    position: relative;
+}
+
+.background-gradient {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 66%;
+    background: linear-gradient(to top, var(--color-sage-light), rgba(225, 235, 228, 0.3), transparent);
+    pointer-events: none;
+    z-index: 0;
+    transition: background 0.3s;
+}
+
+.dark .background-gradient {
+    background: linear-gradient(to top, var(--color-sage-dark), rgba(31, 46, 35, 0.3), transparent);
+}
+
+.content-container {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 24px;
+    max-width: 448px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.header-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 32px;
+}
+
+.app-logo {
+    width: 96px;
+    height: 96px;
+    object-fit: contain;
+    margin-bottom: 8px;
+    filter: drop-shadow(0 4px 12px rgba(93, 138, 244, 0.15));
+    transition: transform 0.3s ease;
+}
+
+.app-logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background-color: rgba(93, 138, 244, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    box-shadow: var(--shadow-soft);
+    backdrop-filter: blur(8px);
+}
+
+.logo-icon {
+    font-size: 32px !important;
+}
+
+.title {
+    color: var(--color-primary);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    text-align: center;
+    margin: 0;
+    padding: 0 16px;
+}
+
+.subtitle {
+    color: var(--color-text-secondary);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    margin: 0;
+    padding: 0 16px;
+}
+
+.hero-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 32px;
+}
+
+.hero-image {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background-color: var(--color-surface);
+    padding: 8px;
+    box-shadow: var(--shadow-tactile);
+    background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBXLfYImSZeMPZAszULzkDsA8j7uXcNDHXzX_Alu2O1b252ONR1NtmoYWnZ7c-6dunuIsjqfQm0ckoAfGdRJfrYU8yQ4tonCxxtTwMobFNVFUEm1fpJ8mV2fzacEDRdIvzXczPrvg0je-QEJafWnPNDQNznH4_Lmbz3kWAm_sCBKZl5AaAkEcwkOMY0mjsuVsnXSLDOhNZS9q0Qs0otVOhbQdqdwkhLUhV1GvwDGByM60KcWtHaf3UvD66DjQ6KDk9BrMgIu43OXNA');
+    background-size: cover;
+    background-position: center;
+    transition: background-color 0.3s;
+}
+
+.buttons-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+    justify-content: flex-end;
+    padding-bottom: 32px;
+}
+
+.footer-section {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+}
+
+.login-text {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.link-primary {
+    color: var(--color-primary);
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.link-primary:hover {
+    color: var(--color-primary-dark);
+}
+
+.terms-text {
+    font-size: 12px;
+    text-align: center;
+    color: var(--color-text-tertiary);
+    line-height: 1.4;
+    max-width: 320px;
+    margin: 0;
+}
+
+.link-underline {
+    color: inherit;
+    text-decoration: underline;
+    transition: color 0.2s;
+}
+
+.link-underline:hover {
+    color: var(--color-text-secondary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.header-section,
+.hero-container,
+.buttons-section {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.hero-container {
+    animation-delay: 0.1s;
+}
+
+.buttons-section {
+    animation-delay: 0.2s;
+}

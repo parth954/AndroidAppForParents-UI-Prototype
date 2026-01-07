@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Device Type Selection - Parental Control</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+        rel="stylesheet">
+
+    <!-- Modular CSS -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/device-type-selection.css">
+    <link rel="stylesheet" href="components/buttons.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+    <div class="app-container" id="app">
+        <!-- Background gradient -->
+        <div class="background-gradient"></div>
+
+        <!-- Content container -->
+        <div class="content-container">
+            <!-- Back button -->
+            <button class="back-button" onclick="window.location.href='family-setup.html'" title="Back">
+                <span class="material-symbols-outlined">arrow_back</span>
+            </button>
+
+            <!-- Progress indicators -->
+            <div class="progress-indicators">
+                <div class="progress-dot active"></div>
+                <div class="progress-dot"></div>
+                <div class="progress-dot"></div>
+            </div>
+
+            <!-- Header section -->
+            <div class="header-section">
+                <h1 class="title">Who's Using This Device?</h1>
+                <p class="subtitle">Select the primary user to personalize the experience</p>
+            </div>
+
+            <!-- Device selection cards -->
+            <div class="device-cards">
+                <!-- Parent Device Card -->
+                <button class="device-card" id="parentCard" onclick="DeviceTypeHandlers.selectParent()">
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon parent-icon">
+                            <span class="material-symbols-outlined">shield</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Parent Device</h3>
+                        <p class="card-description">Monitor activity, set limits, and manage family safety</p>
+                    </div>
+                    <div class="radio-indicator"></div>
+                </button>
+
+                <!-- Child Device Card -->
+                <button class="device-card" id="childCard" onclick="DeviceTypeHandlers.selectChild()">
+                    <div class="card-icon-wrapper">
+                        <div class="card-icon child-icon">
+                            <span class="material-symbols-outlined">toys</span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Child Device</h3>
+                        <p class="card-description">A safe space to explore, learn, and play protected</p>
+                    </div>
+                    <div class="radio-indicator"></div>
+                </button>
+            </div>
+
+            <!-- Continue button -->
+            <div class="button-container">
+                <button class="btn btn-primary btn-large" id="continueBtn" onclick="DeviceTypeHandlers.continue()"
+                    disabled>
+                    Continue
+                </button>
+            </div>
+        </div>
+
+        <!-- Theme toggle -->
+        <button class="theme-toggle" onclick="ThemeManager.toggle()" title="Toggle dark mode">
+            <span class="material-symbols-outlined">dark_mode</span>
+        </button>
+    </div>
+
+    <!-- Modular JavaScript -->
+    <script src="js/notifications.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/device-type-selection.js"></script>
+</body>
+
+</html>
