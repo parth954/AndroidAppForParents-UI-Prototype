@@ -398,11 +398,18 @@ input:checked+.slider:before {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 16px;
+    padding: 16px;
     background-color: white;
-    border-radius: 16px;
-    border: 1px solid rgba(0, 0, 0, 0.03);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.06);
+    border-color: rgba(93, 138, 244, 0.1);
 }
 
 .dark .app-item {
@@ -451,13 +458,15 @@ input:checked+.slider:before {
 
 .not-age-appropriate-badge {
     font-size: 10px;
-    background-color: rgba(239, 68, 68, 0.1);
+    background-color: rgba(239, 68, 68, 0.08);
     color: var(--color-error);
-    padding: 2px 6px;
-    border-radius: 4px;
-    margin-left: 4px;
-    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 100px;
+    margin-left: 6px;
+    font-weight: 700;
     vertical-align: middle;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
 }
 
 /* Category Chip */
@@ -468,31 +477,36 @@ input:checked+.slider:before {
 
 .category-chip {
     font-size: 11px;
-    background-color: rgba(0, 0, 0, 0.06);
-    color: var(--color-text-secondary);
-    padding: 4px 10px;
-    border-radius: 12px;
+    background-color: rgba(93, 138, 244, 0.06);
+    color: var(--color-primary);
+    padding: 6px 12px;
+    border-radius: 100px;
     display: inline-flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     width: fit-content;
     cursor: pointer;
     border: 1px solid transparent;
-    transition: all 0.2s;
-    font-weight: 500;
+    transition: all 0.2s ease;
+    font-weight: 600;
+    letter-spacing: 0.2px;
 }
 
 .dark .category-chip {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(93, 138, 244, 0.15);
+    color: #81Adf5;
 }
 
 .category-chip:hover {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-color: rgba(0, 0, 0, 0.1);
+    background-color: var(--color-primary);
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(93, 138, 244, 0.25);
 }
 
 .dark .category-chip:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: var(--color-primary);
+    color: white;
 }
 
 .category-chip .material-symbols-outlined {
@@ -501,7 +515,9 @@ input:checked+.slider:before {
 
 /* Dropdown Menu */
 .menu-popup {
-    position: fixed;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
     /* Fixed to allow escaping container clipping */
     background: white;
     border-radius: 12px;

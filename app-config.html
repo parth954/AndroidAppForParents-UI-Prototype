@@ -32,23 +32,19 @@
                 <span class="material-symbols-outlined">arrow_back</span>
             </button>
             <h1 class="header-title">Select Allowed Apps</h1>
-            <button class="icon-button refresh-btn">
-                <span class="material-symbols-outlined">sync</span>
-            </button>
+            <div style="width: 40px;"></div>
+
         </header>
 
         <main class="main-content">
 
-            <!-- Filter Tabs -->
-            <div class="filter-tabs" style="display: flex; gap: 12px; margin-bottom: 20px;">
-                <button class="filter-tab active" id="tab-age" onclick="AppConfig.setFilter('age-appropriate')"
-                    style="flex: 1; padding: 12px; border-radius: 12px; background: white; border: none; font-weight: 600; color: var(--color-primary); box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
-                    Age Appropriate
-                </button>
-                <button class="filter-tab" id="tab-all" onclick="AppConfig.setFilter('all-apps')"
-                    style="flex: 1; padding: 12px; border-radius: 12px; background: rgba(255,255,255,0.5); border: none; font-weight: 600; color: var(--color-text-secondary);">
-                    All Apps
-                </button>
+            <!-- Info Banner -->
+            <div class="info-banner" style="margin-bottom: 20px;">
+                <span class="material-symbols-outlined">info</span>
+                <div class="banner-content">
+                    <span class="banner-title">Inherited Settings</span>
+                    <p>Only apps configured as allowed in App Limits are available for selection</p>
+                </div>
             </div>
 
             <!-- Dynamic App List Container -->

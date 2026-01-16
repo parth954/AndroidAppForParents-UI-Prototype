@@ -7,6 +7,8 @@ const defaultCategoriesData = {
         class: 'education',
         limitEnabled: false,
         limitMinutes: 60,
+        sessionLimitEnabled: true,
+        sessionLimitMinutes: 45,
         apps: [
             { id: 'app-duolingo', name: 'Duolingo', icon: 'assets/app-icons/duolingo.png', allowed: true, ageAppropriate: true, category: 'education' },
             { id: 'app-khan', name: 'Khan Academy', icon: 'assets/app-icons/khan.png', allowed: true, ageAppropriate: true, category: 'education' },
@@ -20,6 +22,8 @@ const defaultCategoriesData = {
         class: 'entertainment',
         limitEnabled: true,
         limitMinutes: 60,
+        sessionLimitEnabled: true,
+        sessionLimitMinutes: 30,
         apps: [
             { id: 'app-youtube', name: 'YouTube', icon: 'assets/app-icons/youtube.png', allowed: true, ageAppropriate: true, category: 'entertainment' },
             { id: 'app-netflix', name: 'Netflix', icon: 'assets/app-icons/netflix.png', allowed: true, ageAppropriate: true, category: 'entertainment' },
@@ -33,6 +37,8 @@ const defaultCategoriesData = {
         class: 'gaming',
         limitEnabled: true,
         limitMinutes: 30,
+        sessionLimitEnabled: true,
+        sessionLimitMinutes: 20,
         apps: [
             { id: 'app-roblox', name: 'Roblox', icon: 'assets/app-icons/roblox.png', allowed: true, ageAppropriate: false, category: 'gaming' },
             { id: 'app-minecraft', name: 'Minecraft', icon: 'assets/app-icons/minecraft.png', allowed: true, ageAppropriate: true, category: 'gaming' },
@@ -47,6 +53,8 @@ const defaultCategoriesData = {
         class: 'social',
         limitEnabled: true,
         limitMinutes: 0,
+        sessionLimitEnabled: true,
+        sessionLimitMinutes: 15,
         apps: [
             { id: 'app-whatsapp', name: 'WhatsApp', icon: 'assets/app-icons/whatsapp.png', allowed: false, ageAppropriate: true, category: 'social' },
             { id: 'app-messenger', name: 'Messenger', icon: 'assets/app-icons/messenger.png', allowed: false, ageAppropriate: true, category: 'social' },
@@ -54,8 +62,8 @@ const defaultCategoriesData = {
             { id: 'app-tiktok', name: 'TikTok', icon: 'assets/app-icons/tiktok.png', allowed: false, ageAppropriate: false, category: 'social' }
         ]
     },
-    'creativity': { name: 'Creativity', icon: 'brush', class: 'creativity', limitEnabled: true, limitMinutes: 45, apps: [] },
-    'utilities': { name: 'System & Utilities', icon: 'settings', class: 'utilities', limitEnabled: false, limitMinutes: 0, apps: [] }
+    'creativity': { name: 'Creativity', icon: 'brush', class: 'creativity', limitEnabled: true, limitMinutes: 45, sessionLimitEnabled: true, sessionLimitMinutes: 45, apps: [] },
+    'utilities': { name: 'System & Utilities', icon: 'settings', class: 'utilities', limitEnabled: false, limitMinutes: 0, sessionLimitEnabled: false, sessionLimitMinutes: 0, apps: [] }
 };
 
 let appData = null;
@@ -105,11 +113,10 @@ const CategoryHandlers = {
         document.getElementById('hero-symbol').textContent = data.icon;
         document.getElementById('hero-icon').className = `hero-cat-icon ${data.class}`;
 
-        // Controls Init
+        // Limit Controls
         const toggle = document.getElementById('limit-toggle');
         const sliderContainer = document.getElementById('limit-slider-wrapper');
         const slider = document.getElementById('time-range');
-        const display = document.getElementById('time-value');
 
         toggle.checked = data.limitEnabled;
         slider.value = data.limitMinutes;
@@ -119,6 +126,25 @@ const CategoryHandlers = {
         } else {
             sliderContainer.classList.add('disabled');
         }
+        this.updateTimeDisplayUI(data.limitMinutes);
+
+        // Session Limit Controls
+        const sessionToggle = document.getElementById('session-toggle');
+        const sessionContainer = document.getElementById('session-slider-wrapper');
+        const sessionSlider = document.getElementById('session-range');
+
+        // Default to true if undefined
+        if (data.sessionLimitEnabled === undefined) data.sessionLimitEnabled = true;
+
+        sessionToggle.checked = data.sessionLimitEnabled;
+        sessionSlider.value = data.sessionLimitMinutes || 30;
+
+        if (data.sessionLimitEnabled) {
+            sessionContainer.classList.remove('disabled');
+        } else {
+            sessionContainer.classList.add('disabled');
+        }
+        this.updateSessionDisplayUI(data.sessionLimitMinutes || 30, !data.sessionLimitEnabled);
 
         this.updateTimeDisplayUI(data.limitMinutes);
 
@@ -195,8 +221,8 @@ const CategoryHandlers = {
                         </span>
                         <div class="chip-wrapper">
                             <div class="category-chip" onclick="CategoryHandlers.toggleDropdown(event, '${dropdownId}')">
-                                <span class="material-symbols-outlined">label</span>
-                                <span class="chip-text">${catName}</span>
+                                <span class="material-symbols-outlined">edit</span>
+                                <span class="chip-text">Change Category</span>
                                 <span class="material-symbols-outlined" style="font-size: 16px;">arrow_drop_down</span>
                             </div>
                             <!-- Dropdown -->
@@ -219,15 +245,26 @@ const CategoryHandlers = {
         event.stopPropagation();
         this.closeAllMenus();
         const menu = document.getElementById(id);
-        const rect = event.currentTarget.getBoundingClientRect();
+        const appItem = event.currentTarget.closest('.app-item');
+
+        // Boost z-index of the current item so the dropdown appears above siblings
+        if (appItem) {
+            appItem.style.zIndex = '100';
+            appItem.style.position = 'relative'; // Ensure stacking context
+        }
 
         menu.style.display = 'block';
-        menu.style.top = `${rect.bottom + 4}px`;
-        menu.style.left = `${rect.left}px`;
+        // We will handle positioning via CSS absolute positioning now
         setTimeout(() => menu.classList.add('visible'), 10);
     },
 
     closeAllMenus() {
+        // Reset z-indexes
+        document.querySelectorAll('.app-item').forEach(item => {
+            item.style.zIndex = '';
+            item.style.position = '';
+        });
+
         document.querySelectorAll('.menu-popup').forEach(menu => {
             menu.classList.remove('visible');
             setTimeout(() => { if (!menu.classList.contains('visible')) menu.style.display = 'none'; }, 150);
@@ -263,6 +300,11 @@ const CategoryHandlers = {
 
             this.saveState();
             this.filterAndRenderApps(); // Re-render current view (App will disappear if it was moved OUT of current view)
+
+            // Show Toast
+            if (window.NotificationManager) {
+                NotificationManager.show(`Moved <b>${foundApp.name}</b> to <b>${appData[newCategoryKey].name} category</b>`);
+            }
 
             console.log(`Moved ${foundApp.name} to ${appData[newCategoryKey].name}`);
         }
@@ -327,6 +369,11 @@ const CategoryHandlers = {
             this.filterAndRenderApps();
         }
 
+        // Rule: If Session Limit is DISABLED, it must sync with Daily Limit
+        if (!appData[currentByCategory].sessionLimitEnabled) {
+            this.updateSessionDisplayUI(val, true);
+        }
+
         this.saveState();
     },
 
@@ -334,6 +381,73 @@ const CategoryHandlers = {
         const display = document.getElementById('time-value');
         if (val == 0) display.textContent = 'Blocked';
         else if (val >= 240) display.textContent = '4h+';
+        else {
+            const h = Math.floor(val / 60);
+            const m = val % 60;
+            display.textContent = h > 0 ? `${h}h ${m}m` : `${m}m`;
+        }
+    },
+
+    // Session Limit Handlers
+    toggleSessionLimit() {
+        const toggle = document.getElementById('session-toggle');
+        const sliderContainer = document.getElementById('session-slider-wrapper');
+        const isEnabled = toggle.checked;
+
+        appData[currentByCategory].sessionLimitEnabled = isEnabled;
+
+        if (isEnabled) {
+            sliderContainer.classList.remove('disabled');
+            // When enabling, restore the value from the slider or default
+            // If data was 0 or undefined, maybe set a default useful value like 30m?
+            const currentVal = parseInt(document.getElementById('session-range').value) || 30;
+            appData[currentByCategory].sessionLimitMinutes = currentVal;
+            this.updateSessionDisplayUI(currentVal, false);
+        } else {
+            sliderContainer.classList.add('disabled');
+            // Rule: If disabled, session limit = daily limit
+            // We don't overwrite the 'sessionLimitMinutes' stored value (so we can restore it),
+            // but the UI should show it matches the daily limit.
+            // However, effective logic (if we were backend) would be sessionLimit = dailyLimit.
+
+            // For UI prototype: Update the display to show state
+            const dailyLimit = appData[currentByCategory].limitMinutes;
+            // Temporarily update display to show sync
+            this.updateSessionDisplayUI(dailyLimit, true);
+        }
+        this.saveState();
+    },
+
+    updateSessionDisplay() {
+        const slider = document.getElementById('session-range');
+        let val = parseInt(slider.value);
+
+        // Rule: Session Limit cannot exceed Daily Limit (if Daily Limit is set > 0)
+        // If Daily Limit is 1h (60m), Session cannot be 2h
+        const dailyLimit = appData[currentByCategory].limitMinutes;
+
+        if (dailyLimit > 0 && val > dailyLimit) {
+            // Snap back visually/logically if you want, or just let users do it?
+            // "If disabled, ... same as daily limit." implies logical constraint.
+            // Let's just update as is for now, but maybe warn? 
+            // Better UX: Allow setting, but maybe show warning.
+            // For now, simple update.
+        }
+
+        appData[currentByCategory].sessionLimitMinutes = val;
+        this.updateSessionDisplayUI(val, false);
+        this.saveState();
+    },
+
+    updateSessionDisplayUI(val, isDisabled) {
+        const display = document.getElementById('session-value');
+
+        if (isDisabled) {
+            display.innerHTML = '<span style="font-size: 16px; opacity: 0.8;">Matches Daily Limit</span>';
+            return;
+        }
+
+        if (val >= 120) display.textContent = '2h';
         else {
             const h = Math.floor(val / 60);
             const m = val % 60;

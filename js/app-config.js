@@ -55,9 +55,10 @@ const essentialApps = {
 
 const AppConfig = {
     scheduleId: null,
+    scheduleId: null,
     childName: null,
-    currentFilter: 'age-appropriate',
     allowedApps: new Set(), // Set of App IDs allowed for this schedule
+    parentConfig: null, // Global parent configuration
 
     init() {
         // 1. Get Context
@@ -70,30 +71,73 @@ const AppConfig = {
             return;
         }
 
-        // 2. Load Data
+        // 2. Load Parent Global Config
+        this.loadParentConfig();
+
+        // 3. Load Data
         this.loadScheduleData();
 
-        // 3. Render
+        // 4. Render
         this.render();
+    },
+
+    loadParentConfig() {
+        const stored = localStorage.getItem('parentApp_categoriesData');
+        if (stored) {
+            this.parentConfig = JSON.parse(stored);
+        } else {
+            // Fallback to default structure if no edits made yet
+            console.log('AppConfig: No parent data found, initializing defaults.');
+            this.parentConfig = JSON.parse(JSON.stringify(defaultCategoriesData));
+            // Force save this default so other pages see it too
+            localStorage.setItem('parentApp_categoriesData', JSON.stringify(this.parentConfig));
+        }
     },
 
     loadScheduleData() {
         const key = `schedules_${this.childName}`;
         const stored = localStorage.getItem(key);
+        const urlParams = new URLSearchParams(window.location.search);
+        const isNew = urlParams.get('isNew') === 'true';
+
         if (stored) {
             const schedules = JSON.parse(stored);
             const schedule = schedules.find(s => s.id === this.scheduleId);
             if (schedule) {
                 // Initialize Allowed Apps
-                // If allowedApps property doesn't exist (new feature), default to ? 
-                // For Downtime, default is usually EMPTY (Block all except...).
-                // But let's check.
-                if (schedule.allowedApps) {
+                if (schedule.allowedApps && schedule.allowedApps.length > 0) {
                     this.allowedApps = new Set(schedule.allowedApps);
                 } else {
+                    // Start fresh
                     this.allowedApps = new Set();
-                    // Maybe pre-allow essential apps?
-                    essentialApps.apps.forEach(a => this.allowedApps.add(a.id));
+
+                    if (isNew) {
+                        // FEATURE: For NEW schedules, auto-select Age Appropriate apps by default
+                        // This is a "Smart Default" to save parents time.
+                        const sourceData = this.parentConfig || defaultCategoriesData;
+
+                        // Add Essential apps first
+                        essentialApps.apps.forEach(a => this.allowedApps.add(a.id));
+
+                        // Iterate all categories
+                        Object.values(sourceData).forEach(cat => {
+                            cat.apps.forEach(app => {
+                                // Logic: If Age Appropriate AND Globally Allowed (if checked), enable it.
+                                // Note: We already filter viewing by global allowed, so we should check global allowed here or assume sourceData helps.
+                                // parentConfig apps don't strictly hide 'allowed=false' apps in data structure, they just mark them allowed:false.
+                                const isGloballyAllowed = app.allowed !== false;
+
+                                if (app.ageAppropriate && isGloballyAllowed) {
+                                    this.allowedApps.add(app.id);
+                                }
+                            });
+                        });
+                    } else {
+                        // For EXISTING schedules with 0 apps, arguably they might want 0 apps blocked?
+                        // Or maybe just defaults. Let's stick to Essential only to be safe, unless user requests otherwise.
+                        // Essential apps are usually always needed.
+                        essentialApps.apps.forEach(a => this.allowedApps.add(a.id));
+                    }
                 }
             }
         }
@@ -113,37 +157,7 @@ const AppConfig = {
         }
     },
 
-    setFilter(mode) {
-        this.currentFilter = mode;
 
-        // Update Tabs UI
-        const tabAge = document.getElementById('tab-age');
-        const tabAll = document.getElementById('tab-all');
-
-        if (mode === 'age-appropriate') {
-            tabAge.classList.add('active');
-            tabAge.style.background = 'white';
-            tabAge.style.color = 'var(--color-primary)';
-            tabAge.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
-
-            tabAll.classList.remove('active');
-            tabAll.style.background = 'rgba(255,255,255,0.5)';
-            tabAll.style.color = 'var(--color-text-secondary)';
-            tabAll.style.boxShadow = 'none';
-        } else {
-            tabAll.classList.add('active');
-            tabAll.style.background = 'white';
-            tabAll.style.color = 'var(--color-primary)';
-            tabAll.style.boxShadow = '0 2px 4px rgba(0,0,0,0.05)';
-
-            tabAge.classList.remove('active');
-            tabAge.style.background = 'rgba(255,255,255,0.5)';
-            tabAge.style.color = 'var(--color-text-secondary)';
-            tabAge.style.boxShadow = 'none';
-        }
-
-        this.render();
-    },
 
     render() {
         const container = document.getElementById('config-app-list');
@@ -153,15 +167,28 @@ const AppConfig = {
         this.renderCategoryCard(container, essentialApps, 'system', true);
 
         // Render Standard Categories (Collapsed by default)
-        Object.entries(defaultCategoriesData).forEach(([key, data]) => {
+        // Use Parent Config to drive the list, ensuring we have the latest categories/apps
+        // If parentConfig is missing structure, fall back to defaultCategoriesData structure key iteration
+        const sourceData = this.parentConfig || defaultCategoriesData;
+
+        Object.entries(sourceData).forEach(([key, data]) => {
             this.renderCategoryCard(container, data, key, false);
         });
     },
 
     renderCategoryCard(container, data, type, isOpen = true) {
-        // Filter Apps
+        // Filter Apps based on Parent's Global Config + Current Tab
         const filteredApps = data.apps.filter(app => {
-            if (this.currentFilter === 'age-appropriate' && !app.ageAppropriate) return false;
+            // CRITICAL REQUIREMENT: Only show apps enabled by parent globally
+            // If parentConfig exists, check 'allowed' property.
+            // Note: essentialApps structure is slightly different (no 'allowed' prop usually), assumption is they are always allowed or managed separately.
+            // For standard categories:
+            if (type !== 'system' && app.allowed === false) {
+                return false;
+            }
+
+
+
             return true;
         });
 
@@ -247,17 +274,36 @@ const AppConfig = {
         }
 
         this.saveScheduleData();
-
-        // Re-render only to update counts? Or just trust toggle state visually?
-        // Updating counts requires re-render of headers.
-        // For localized update, we could update the specific text.
-        // For simplicity, let's re-render the headers or lists?
-        // Re-rendering whole list resets scroll. Better to just update data.
-        // User sees toggle moving, that's enough feedback.
-        // But "X of Y apps allowed" text will be stale.
-        // Let's re-render. If scroll jumps, we'll fix.
-        // Optimization: Don't re-render entire list.
         this.render();
+    },
+
+    resetToDefaults() {
+        if (!confirm('Reset allowed apps to "Age Appropriate" defaults?')) return;
+
+        this.allowedApps.clear();
+        const sourceData = this.parentConfig || defaultCategoriesData;
+
+        // Add Essential apps
+        essentialApps.apps.forEach(a => this.allowedApps.add(a.id));
+
+        // Add Age Appropriate & Globally Allowed
+        Object.values(sourceData).forEach(cat => {
+            cat.apps.forEach(app => {
+                const isGloballyAllowed = app.allowed !== false;
+                if (app.ageAppropriate && isGloballyAllowed) {
+                    this.allowedApps.add(app.id);
+                }
+            });
+        });
+
+        this.saveScheduleData();
+        this.render();
+
+        // Visual feedback
+        const btn = document.querySelector('.refresh-btn span');
+        btn.style.transition = 'transform 0.5s';
+        btn.style.transform = 'rotate(-360deg)';
+        setTimeout(() => btn.style.transform = '', 500);
     }
 };
 

@@ -21,25 +21,42 @@
 // ===================================
 
 const NotificationManager = {
-    show: function (message) {
+    show: function (message, type = 'success') {
         // Create notification element
         const notification = document.createElement('div');
         notification.className = 'notification';
-        notification.textContent = message;
+
+        // Define styles based on type
+        const isError = type === 'error';
+        const iconColor = isError ? '#F87171' : '#4ADE80'; // Red vs Green
+        const iconName = isError ? 'error' : 'check_circle';
+
         notification.style.cssText = `
             position: fixed;
-            top: 80px;
+            top: 20px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: var(--color-primary);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-            z-index: 1000;
-            font-size: 14px;
-            font-weight: 600;
-            animation: slideDown 0.3s ease-out;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            color: #F8FAFC;
+            padding: 12px 20px;
+            border-radius: 100px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15), 0 0 0 1px rgba(255,255,255,0.1);
+            z-index: 10000;
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideDown 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        `;
+
+        // Add icon
+        notification.innerHTML = `
+            <span class="material-symbols-outlined" style="font-size: 18px; color: ${iconColor};">${iconName}</span>
+            <span>${message}</span>
         `;
 
         document.body.appendChild(notification);
@@ -48,7 +65,9 @@ const NotificationManager = {
         setTimeout(() => {
             notification.style.animation = 'slideUp 0.3s ease-out';
             setTimeout(() => {
-                document.body.removeChild(notification);
+                if (document.body.contains(notification)) {
+                    document.body.removeChild(notification);
+                }
             }, 300);
         }, 3000);
     }

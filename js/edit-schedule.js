@@ -169,7 +169,7 @@ const EditScheduleHandlers = {
         this.saveData(false); // Save changes first
         const urlParams = new URLSearchParams(window.location.search);
         const childName = urlParams.get('child') || 'Child';
-        window.location.href = `app-config.html?schedule=${this.scheduleId}&child=${encodeURIComponent(childName)}`;
+        window.location.href = `app-config.html?schedule=${this.scheduleId}&child=${encodeURIComponent(childName)}&isNew=false`;
     },
 
     save() {
@@ -270,6 +270,30 @@ const TimePicker = {
     save() {
         const start = this.getSelectedTime(document.getElementById('start-time-scroller'));
         const end = this.getSelectedTime(document.getElementById('end-time-scroller'));
+
+        // Validation: Max 12 hours
+        const [sh, sm] = start.split(':').map(Number);
+        const [eh, em] = end.split(':').map(Number);
+        const startMins = sh * 60 + sm;
+        const endMins = eh * 60 + em;
+
+        let duration = 0;
+        if (endMins >= startMins) {
+            duration = endMins - startMins;
+        } else {
+            // Overnight
+            duration = (24 * 60 - startMins) + endMins;
+        }
+
+        if (duration > 720) { // 12 hours
+            if (window.NotificationManager) {
+                NotificationManager.show('Schedule duration cannot exceed 12 hours', 'error');
+            } else {
+                alert('Schedule duration cannot exceed 12 hours');
+            }
+            return;
+        }
+
         document.getElementById('start-time').value = start;
         document.getElementById('end-time').value = end;
         if (document.getElementById('start-display')) document.getElementById('start-display').textContent = start;

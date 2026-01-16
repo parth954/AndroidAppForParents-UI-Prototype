@@ -31,3 +31,4 @@ node_modules/
 
 # Gemini/AI artifacts (keep local only)
 .gemini/
+.agent/
